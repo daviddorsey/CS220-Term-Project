@@ -25,8 +25,8 @@ public:
     virtual void remove() = 0;
     
     //Chagnes the price of an item
-    //int price - new price that the item will be set to
-    virtual void setPrice(int price) = 0;
+    //float price - new price that the item will be set to
+    virtual void setPrice(float price) = 0;
     
 };
 
