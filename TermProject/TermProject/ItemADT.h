@@ -9,5 +9,9 @@
 #ifndef TermProject_ItemADT_h
 #define TermProject_ItemADT_h
 
+class ItemADT{
+    
+};
 
 #endif
+
