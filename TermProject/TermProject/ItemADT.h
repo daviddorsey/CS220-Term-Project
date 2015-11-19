@@ -24,7 +24,7 @@ public:
     //Removes an item from the shelves, setting numInStock to 0
     virtual void remove() = 0;
     
-    //Chagnes the price of an item
+    //Changes the price of an item
     //float price - new price that the item will be set to
     virtual void setPrice(float price) = 0;
     
