@@ -11,8 +11,9 @@
 
 #include <stdio.h>
 #include <string>
+#include "ItemADT.h"
 
-class Console{
+class Console : ItemADT{
     
 private:
     //number of a specific console that the store has in stock
