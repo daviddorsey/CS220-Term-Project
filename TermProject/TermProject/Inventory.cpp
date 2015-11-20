@@ -7,6 +7,7 @@
 //
 
 #include "Inventory.h"
+#include "Console.h"
 
 inventory::inventory(){
     gameSize =10;
@@ -16,7 +17,7 @@ inventory::inventory(){
     consoleSize = 10;
     consoleIndex=0;
     gameStock = new ItemADT*[gameSize];
-    consoleStock = new ItemADT*[consoleSize];
+    consoleStock = new Console*[consoleSize];
     acessStock = new ItemADT*[acessSize];
     
 };
@@ -24,7 +25,7 @@ inventory::inventory(){
 void inventory::additem(int numinStock, std::string title, float price, std::string edition, std::string manufacturer, int warranty, bool preowned){
     
     if(consoleIndex<consoleSize){
-        consoleStock[consoleIndex]= new Console(numinStock,title,price,edition,manufacturer,warranty,preowned);
+        consoleStock[consoleIndex]= new Console(numinStock,price,title,edition,manufacturer,warranty,preowned);
         consoleIndex++;
     }
 };
@@ -33,9 +34,9 @@ void inventory::restock(int choice, std::string title, int numCopies){
     switch (choice) {
         case 0:
             for(int i=0; i<gameSize;i++){
-                if(gameStock[i]->getTitle() == title){
-                    gameStock[i]->buy(numCopies);
-                }
+//                if(gameStock[i]->getTitle() == title){
+//                    gameStock[i]->buy(numCopies);
+//                }
             }
             break;
         case 1:
@@ -47,9 +48,9 @@ void inventory::restock(int choice, std::string title, int numCopies){
             break;
         case 2:
             for(int i=0; i<acessSize;i++){
-                if(acessStock[i]->getTitle() == title){
-                    acessStock[i]->buy(numCopies);
-                }
+//                if(acessStock[i]->getTitle() == title){
+//                    acessStock[i]->buy(numCopies);
+//                }
             }
             break;
         default:
@@ -61,23 +62,23 @@ void inventory::sell(int choice,std::string title, int amount){
     switch (choice) {
         case 0:
             for(int i=0; i<gameSize;i++){
-                if(gameStock[i]->getTitle() == title){
-                    gameStock[i]->sell(numCopies);
-                }
+//                if(gameStock[i]->getTitle() == title){
+//                    gameStock[i]->sell(numCopies);
+//                }
             }
             break;
         case 1:
             for(int i=0; i<consoleSize;i++){
                 if(consoleStock[i]->getTitle() == title){
-                    consoleStock[i]->sell(numCopies);
+                    consoleStock[i]->sell(amount);
                 }
             }
             break;
         case 2:
             for(int i=0; i<acessSize;i++){
-                if(acessStock[i]->getTitle() == title){
-                    acessStock[i]->sell(numCopies);
-                }
+//                if(acessStock[i]->getTitle() == title){
+//                    acessStock[i]->sell(numCopies);
+//                }
             }
             break;
         default:
@@ -86,30 +87,32 @@ void inventory::sell(int choice,std::string title, int amount){
 
 };
 
-std::string inventory::checkStock(choice,std::string title){
+std::string inventory::checkStock(int choice,std::string title){
+    std::string temp;
     switch (choice) {
         case 0:
             for(int i=0; i<gameSize;i++){
-                if(gameStock[i]->getTitle() == title){
-                    std::cout<<gameStock[i]->toSting();
-                }
+//                if(gameStock[i]->getTitle() == title){
+//                    std::cout<<gameStock[i]->toString();
+//                }
             }
             break;
         case 1:
             for(int i=0; i<consoleSize;i++){
                 if(consoleStock[i]->getTitle() == title){
-                    std::cout<<consoleStock[i]->toSting();
+                    temp = consoleStock[i]->toString();
                 }
             }
             break;
         case 2:
             for(int i=0; i<acessSize;i++){
-                if(acessStock[i]->getTitle() == title){
-                    std::cout<<acessStock[i]->stoSting();
-                }
+//                if(acessStock[i]->getTitle() == title){
+//                    std::cout<<acessStock[i]->toString();
+//                }
             }
             break;
         default:
             break;
     }
-};
+    return temp;
+}

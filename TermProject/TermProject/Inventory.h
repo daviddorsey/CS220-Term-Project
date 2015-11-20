@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include <iostream>
 #include "itemADT.h"
+#include "Console.h"
 
 class inventory{
     
@@ -19,7 +20,7 @@ private:
     ItemADT** gameStock;
     int gameIndex;
     int gameSize;
-    ItemADT** consoleStock;
+    Console** consoleStock;
     int consoleIndex;
     int consoleSize;
     ItemADT** acessStock;
