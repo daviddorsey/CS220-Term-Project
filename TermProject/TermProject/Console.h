@@ -13,7 +13,7 @@
 #include <string>
 #include "ItemADT.h"
 
-class Console : ItemADT{
+class Console : public ItemADT{
     
 private:
     //number of a specific console that the store has in stock
