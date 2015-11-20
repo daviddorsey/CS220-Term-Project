@@ -12,18 +12,19 @@
 int main(int argc, const char * argv[]) {
     
     inventory* gameStoreInventory = new inventory();
+    std::cout << "~Prototype testing for Video Game Inventory system~\n\n";
     
-    gameStoreInventory->additem(20, "Xbox One", 300, " ","Microsoft");
+    std::cout << "Testing additem...\n";
+    gameStoreInventory->additem(20, "Xbox One", 300, "default","Microsoft");
+    std:: cout << std::endl << gameStoreInventory->checkStock(1, "Xbox One") << std::endl;
     
-    std:: cout << gameStoreInventory->checkStock(1, "Xbox One");
-    
+    std::cout << "Testing sell...\n";
     gameStoreInventory->sell(1, "Xbox One", 2);
+    std:: cout << std::endl << gameStoreInventory->checkStock(1, "Xbox One") << std::endl;
     
-    std:: cout << gameStoreInventory->checkStock(1, "Xbox One");
-    
+    std::cout << "Testing restock...\n";
     gameStoreInventory->restock(1, "Xbox One", 100);
-    
-    std:: cout << gameStoreInventory->checkStock(1, "Xbox One");
+    std:: cout << std::endl << gameStoreInventory->checkStock(1, "Xbox One") << std::endl;
     
     
     

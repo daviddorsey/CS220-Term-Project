@@ -32,6 +32,7 @@ void inventory::additem(int numinStock, std::string title, float price, std::str
 };
 
 void inventory::restock(int choice, std::string title, int numCopies){
+    std::cout << "Restocking " + title + " x " + std::to_string(numCopies) + ".\n";
     switch (choice) {
         case 0:
             for(int i=0; i<gameIndex;i++){
@@ -89,6 +90,7 @@ void inventory::sell(int choice,std::string title, int amount){
 };
 
 std::string inventory::checkStock(int choice,std::string title){
+    std::cout << "Checking stock...\n";
     std::string temp;
     switch (choice) {
         case 0:
