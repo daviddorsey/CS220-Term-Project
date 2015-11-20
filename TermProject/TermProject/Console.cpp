@@ -30,7 +30,7 @@ void Console::sell(int numCopies){
         std::cin >> selection;
         if(selection == "y"){
             numInStock = 0;
-            std::cout << "Thank you for you purchase!";
+            std::cout << "Sold " + title + " x " + std::to_string(numCopies) + ".\n" + "Thank you for your purchase!\n";
         }
         else{
             return;
@@ -38,7 +38,7 @@ void Console::sell(int numCopies){
     }
     else{
         numInStock -= numCopies;
-        std::cout << "Thank you for you purchase!";
+        std::cout << "Sold " + title + " x " + std::to_string(numCopies) + ".\n" + "Thank you for your purchase!\n";
     }
 }
 
@@ -54,7 +54,7 @@ bool Console::getPreowned(){  return preowned;  }
 
 std::string Console::toString(){
     if(preowned){
-        return title + " - " + edition + " edition (Used): " + std::to_string(numInStock) + "in stock, at $" + std::to_string(price) + ". Manufactured by " + manufacturer + ". Available " + std::to_string(warranty) + " month warranty.";
+        return title + " - " + edition + " edition (Used): " + std::to_string(numInStock) + " in stock, at $" + std::to_string(price) + ". Manufactured by " + manufacturer + ". Available " + std::to_string(warranty) + " month warranty.\n";
     }
-    return title + " - " + edition + " edition (New): " + std::to_string(numInStock) + "in stock, at $" + std::to_string(price) + ". Manufactured by " + manufacturer + ". Available " + std::to_string(warranty) + " month warranty.";
+    return title + " - " + edition + " edition (New): " + std::to_string(numInStock) + " in stock, at $" + std::to_string(price) + ". Manufactured by " + manufacturer + ". Available " + std::to_string(warranty) + " month warranty.\n";
 }
