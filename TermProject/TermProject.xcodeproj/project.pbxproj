@@ -71,8 +71,8 @@
 			isa = PBXGroup;
 			children = (
 				9C7F07401BFC2F160092CD30 /* main.cpp */,
-				9C7F07471BFC2F820092CD30 /* Inventory.cpp */,
 				9C7F07481BFC2F820092CD30 /* Inventory.h */,
+				9C7F07471BFC2F820092CD30 /* Inventory.cpp */,
 				9C7F074A1BFC2FAC0092CD30 /* ItemADT.h */,
 				9C7F074B1BFC2FBE0092CD30 /* Game.cpp */,
 				9C7F074C1BFC2FBE0092CD30 /* Game.h */,
@@ -258,6 +258,7 @@
 				9C7F07461BFC2F160092CD30 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

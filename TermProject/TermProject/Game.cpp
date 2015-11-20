@@ -1,4 +1,6 @@
-/Constructor
+#include "Console.h"
+
+/*Constructor
 Game:: Game(){
     
 }
@@ -94,3 +96,4 @@ void Game:: removePreOrder(std:: string name){
     }
     
 }
+*/
