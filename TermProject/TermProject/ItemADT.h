@@ -11,6 +11,7 @@
 
 class ItemADT{
     
+<<<<<<< HEAD
 public:
     
     //Restocks an item by buying more, reducing revenue for the day
@@ -28,6 +29,9 @@ public:
     //float price - new price that the item will be set to
     virtual void setPrice(float price) = 0;
     
+=======
+>>>>>>> master
 };
 
 #endif
+
