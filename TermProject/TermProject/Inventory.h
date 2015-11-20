@@ -10,5 +10,32 @@
 #define __TermProject__Inventory__
 
 #include <stdio.h>
+#include <iostream>
+#include "itemADT.h"
+
+class inventory{
+    
+private:
+    ItemADT** gameStock;
+    int gameIndex;
+    int gameSize;
+    ItemADT** consoleStock;
+    int consoleIndex;
+    int consoleSize;
+    ItemADT** acessStock;
+    int acessIndex;
+    int acessSize;
+
+public:
+    inventory();
+    void additem(int numinStock= 0, std::string title = "null", float price =0, std::string edition = "stander", std::string manufacturer = "unknow", int warranty = 12, bool preowned = false);
+    void restock(int choice,std::string title, int numCopies);
+    void sell(int choice,std::string title, int amount);
+    void remove(std::string title);
+    std::string checkStock(int choice, std::string title);
+    
+    
+
+};
 
 #endif /* defined(__TermProject__Inventory__) */
