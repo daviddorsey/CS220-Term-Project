@@ -27,6 +27,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		371328381BFE66B1001B9B84 /* QueueADT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QueueADT.h; path = "../../../../Documents/Ithaca Stuff/Fall 2015/Intro to Data/Programs/Lab6/Lab6/QueueADT.h"; sourceTree = "<group>"; };
 		9C7F073D1BFC2F160092CD30 /* TermProject */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TermProject; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C7F07401BFC2F160092CD30 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		9C7F07471BFC2F820092CD30 /* Inventory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Inventory.cpp; sourceTree = "<group>"; };
@@ -76,6 +77,7 @@
 				9C7F074A1BFC2FAC0092CD30 /* ItemADT.h */,
 				9C7F074B1BFC2FBE0092CD30 /* Game.cpp */,
 				9C7F074C1BFC2FBE0092CD30 /* Game.h */,
+				371328381BFE66B1001B9B84 /* QueueADT.h */,
 				9C7F074E1BFC2FCA0092CD30 /* Console.cpp */,
 				9C7F074F1BFC2FCA0092CD30 /* Console.h */,
 				9C7F07511BFC2FD70092CD30 /* Accessory.cpp */,
