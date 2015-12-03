@@ -1,13 +1,32 @@
 #include "Console.h"
+#include "Game.h"
 
-/*Constructor
-Game:: Game(){
+//Constructor
+Game:: Game(int stockIn, float priceIn, std::string titleIn, std::string genreIn, int ratingIn, bool preOwnedIn, std::string publisherIn){
     
+    numInStock = stockIn;
+    price = priceIn;
+    title = titleIn;
+    genre = genreIn;
+    rating = ratingIn;
+    preOwned = preOwnedIn;
+    publisher = publisherIn;
+    waitingList = new QueueADT;
 }
 
 //Copy Constructor
-Game:: Game(Game gameToCopy){
+Game:: Game(Game const &gameToCopy){
     
+    numInStock = gameToCopy.numInStock;
+    price = gameToCopy.price;
+    title = gameToCopy.title;
+    genre = gameToCopy.genre;
+    rating = gameToCopy.rating;
+    preOwned = gameToCopy.preOwned;
+    publisher = gameToCopy.publisher;
+    for (int i = 0; i < gameToCopy.waitingList->sizeOf(); i++) {
+        
+    }
 }
 
 //Destructor
@@ -89,11 +108,10 @@ void Game:: preOrderGame(std:: string name){
     
 }
 
-void Game:: removePreOrder(std:: string name){
+void Game:: removePreOrder(int idNumber){
     
     for (int i = 0; i < waitingList->sizeOf(); i++) {
         waitingList->dequeue();
     }
     
 }
-*/
