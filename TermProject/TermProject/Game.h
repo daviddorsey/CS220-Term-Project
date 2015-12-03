@@ -16,7 +16,7 @@
 
 // defined(__TermProject__Game__)
 class Game : public ItemADT{
-    /*
+
 private:
     int numInStock;
     float price;
@@ -32,7 +32,7 @@ public:
     std:: string toString();
     void comeToStock();
     void preOrderGame(std:: string name);
-     */
+
 
 };
 
