@@ -8,9 +8,12 @@
 
 #include <iostream>
 #include "Inventory.h"
+#include "QueueADT.h"
+#include "Queue.h"
 
 int main(int argc, const char * argv[]) {
     
+    /*
     inventory* gameStoreInventory = new inventory();
     std::cout << "~Prototype testing for Video Game Inventory system~\n\n";
     
@@ -25,8 +28,7 @@ int main(int argc, const char * argv[]) {
     std::cout << "Testing restock...\n";
     gameStoreInventory->restock(1, "Xbox One", 100);
     std:: cout << std::endl << gameStoreInventory->checkStock(1, "Xbox One") << std::endl;
-    
-    
+    */
     
 
     return 0;
