@@ -25,17 +25,30 @@ Accessory:: ~Accessory(){
     
 }
 
-//Allows the store to restock the accessory
+//Input: number of copies user bought
+//Output: nothing
+//Purpose: Allows the store to restock the accessory
 void Accessory:: buy(int numOfCopies){
     numInStock +=numOfCopies;
 }
 
-//Allows the store to set the price of the accessory
+//Input: number of copies user sold
+//Output: nothing
+//Purpose: Allows user to sell the accessory
+void Accessory:: sell(int numOfCopies){
+     numInStock -=numOfCopies;
+}
+
+//Input: price of the item
+//Output: nothing
+//Purpose: Allows the store to set the price of the accessory
 void Accessory:: setPrice(float priceIn){
     price = priceIn;
 }
 
-//returns all of the information the acessory has
+//Input: nothing
+//Output: a stign version of all the data for the accessory
+//Purpose: returns all of the information the acessory has
 std::string Accessory:: toString(){
     
     std:: string result = "Title: " + title + "\n";
