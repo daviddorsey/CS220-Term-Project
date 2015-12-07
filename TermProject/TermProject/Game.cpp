@@ -1,17 +1,38 @@
 #include "Console.h"
+#include "Game.h"
+#include "Queue.h"
 
-/*Constructor
-Game:: Game(){
+//Constructor
+Game:: Game(int stockIn, float priceIn, std::string titleIn, std::string genreIn, int ratingIn, bool preOwnedIn, std::string publisherIn){
     
+    numInStock = stockIn;
+    price = priceIn;
+    title = titleIn;
+    genre = genreIn;
+    rating = ratingIn;
+    preOwned = preOwnedIn;
+    publisher = publisherIn;
+    waitingList = new Queue();
 }
 
 //Copy Constructor
-Game:: Game(Game gameToCopy){
+Game:: Game(Game* gameToCopy){
     
+    numInStock = gameToCopy->numInStock;
+    price = gameToCopy->price;
+    title = gameToCopy->title;
+    genre = gameToCopy->genre;
+    rating = gameToCopy->rating;
+    preOwned = gameToCopy->preOwned;
+    publisher = gameToCopy->publisher;
+    for (int i = 0; i < gameToCopy->waitingList->sizeOf(); i++) {
+        gameToCopy->waitingList->get(i);
+    }
 }
 
 //Destructor
 Game:: ~Game(){
+    delete waitingList;
     
 }
 
@@ -35,10 +56,7 @@ std:: string Game:: toString(){
     if(preOrder){
         result += "This game can only be preordered at this time \n";
         result += "The waiting list for this game is: \n";
-        
-        for (int i = 0; i < waitingList->sizeOf(); i++) {
-            <#statements#>
-        }
+        result += waitingList->toString();
         
     }
     else{
@@ -66,7 +84,7 @@ void Game:: comeToStock(){
     else{
         
         for (int i = 0; i < waitingList->sizeOf(); i++) {
-            std:: cout << <<"recieved " << title <<",";
+            std:: cout << waitingList->get(i) <<"recieved " << title <<",";
         }
         delete waitingList;
         waitingList = nullptr;
@@ -89,11 +107,8 @@ void Game:: preOrderGame(std:: string name){
     
 }
 
-void Game:: removePreOrder(std:: string name){
+std::string Game:: removePreOrder(int idNumber){
     
-    for (int i = 0; i < waitingList->sizeOf(); i++) {
-        waitingList->dequeue();
-    }
+    return waitingList->dequeue(idNumber);
     
 }
-*/
