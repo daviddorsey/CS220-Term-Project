@@ -1,6 +1,5 @@
 #include "Console.h"
 #include "Game.h"
-#include "Queue.h"
 
 //Constructor
 Game:: Game(int stockIn, float priceIn, std::string titleIn, std::string genreIn, int ratingIn, bool preOwnedIn, std::string publisherIn){
@@ -12,27 +11,26 @@ Game:: Game(int stockIn, float priceIn, std::string titleIn, std::string genreIn
     rating = ratingIn;
     preOwned = preOwnedIn;
     publisher = publisherIn;
-    waitingList = new Queue();
+    waitingList = new QueueADT;
 }
 
 //Copy Constructor
-Game:: Game(Game* gameToCopy){
+Game:: Game(Game const &gameToCopy){
     
-    numInStock = gameToCopy->numInStock;
-    price = gameToCopy->price;
-    title = gameToCopy->title;
-    genre = gameToCopy->genre;
-    rating = gameToCopy->rating;
-    preOwned = gameToCopy->preOwned;
-    publisher = gameToCopy->publisher;
-    for (int i = 0; i < gameToCopy->waitingList->sizeOf(); i++) {
-        gameToCopy->waitingList->get(i);
+    numInStock = gameToCopy.numInStock;
+    price = gameToCopy.price;
+    title = gameToCopy.title;
+    genre = gameToCopy.genre;
+    rating = gameToCopy.rating;
+    preOwned = gameToCopy.preOwned;
+    publisher = gameToCopy.publisher;
+    for (int i = 0; i < gameToCopy.waitingList->sizeOf(); i++) {
+        
     }
 }
 
 //Destructor
 Game:: ~Game(){
-    delete waitingList;
     
 }
 
@@ -56,7 +54,10 @@ std:: string Game:: toString(){
     if(preOrder){
         result += "This game can only be preordered at this time \n";
         result += "The waiting list for this game is: \n";
-        result += waitingList->toString();
+        
+        for (int i = 0; i < waitingList->sizeOf(); i++) {
+            <#statements#>
+        }
         
     }
     else{
@@ -84,7 +85,7 @@ void Game:: comeToStock(){
     else{
         
         for (int i = 0; i < waitingList->sizeOf(); i++) {
-            std:: cout << waitingList->get(i) <<"recieved " << title <<",";
+            std:: cout << <<"recieved " << title <<",";
         }
         delete waitingList;
         waitingList = nullptr;
@@ -107,8 +108,10 @@ void Game:: preOrderGame(std:: string name){
     
 }
 
-std::string Game:: removePreOrder(int idNumber){
+void Game:: removePreOrder(int idNumber){
     
-    return waitingList->dequeue(idNumber);
+    for (int i = 0; i < waitingList->sizeOf(); i++) {
+        waitingList->dequeue();
+    }
     
 }

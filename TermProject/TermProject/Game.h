@@ -29,27 +29,11 @@ private:
     bool preOwned;
     
 public:
-    //Constructor
-    Game(int stockIn, float priceIn, std::string titleIn, std::string genreIn, int ratingIn, bool preOwnedIn, std::string publisherIn);
-    
-    //Copy constuctor
-    Game(Game* gameToCopy);
-    
-    //creates a string with all of the contents for the game
-    std::string toString();
-    
-    //allows the game to go from preOrder to in stock
+    std:: string toString();
     void comeToStock();
-    
-    //allows a user to preorder the game
     void preOrderGame(std:: string name);
-    
-    //allows a user to cancle their preorder
-    std::string removePreOrder(int idNumber);
-    
-    //Destructor
-    ~Game();
-    
+
+
 };
 
 #endif

@@ -9,43 +9,38 @@
 #ifndef __Lab6_StacksAndQueues__Queue__
 #define __Lab6_StacksAndQueues__Queue__
 
+#include "GenericItemType.h"
 #include "QueueADT.h"
-#include "Node.h"
 
 class Queue : public QueueADT {
 private:
-    Node* first;
-    Node* last;
+    ItemType* arr;
     int size;
-    int useableIdNumber;
+    int servingNumber;
+    int timer;
     
 public:
     //Constructor: creates a new, empty Queue
     Queue();
-    
     //Copy Constructor: makes a new deep copy of the Queue parameter
-    Queue(Queue* queueToCopy);
-    
+    Queue(const Queue& queueToCopy);
     //Destructor
     ~Queue();
     
     //returns true if Queue has no items, false otherwise
     bool isEmpty();
-    
     //adds one item to the back of the Queue
-    void enqueue(std::string nameIn);
-    
+    void enqueue(ItemType newItem);
     //removes one item from the front of the Queue and returns it
-    std::string dequeue(int idNumberIn);
+    ItemType dequeue();
+    
+    //returns the total number of bytes of memory this object is using
+    int calcMemUsage();
+    //returns the total amount of time used by this object (number of lines of code executed)
+    int getElapsedTime();
     
     //returns the size of the queue
     int sizeOf();
-    
-    //returns all of the contents of the queue
-    std:: string toString();
-    
-    //returns the info of a person in a certain spot
-    std:: string get(int index);
 };
 
 #endif /* defined(__Lab6_StacksAndQueues__Queue__) */
