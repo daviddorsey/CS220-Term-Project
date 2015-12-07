@@ -32,6 +32,7 @@ Game:: Game(Game* gameToCopy){
 
 //Destructor
 Game:: ~Game(){
+    
     delete waitingList;
     
 }
