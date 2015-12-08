@@ -8,35 +8,37 @@
 
 #include <stdio.h>
 #include <iostream>
-#include "Queue.h"
 #include "QueueADT.h"
+#include "Queue.h"
+#include "Node.h"
 
 //Default Constructor
 //Input: nothing
 //Output nothing
 //Purpose: Creates and empty queue
 Queue:: Queue(){
-    arr = new ItemType[1];
-    size = 1;
-    servingNumber = 0;
-    timer = 3;
+    first = nullptr;
+    last = nullptr;
+    size = 0;
+    useableIdNumber = 0;
 }
 
 //Constructor with queue to enter
 //Input: queue to be used
 //Output nothing
 //Purpose: Creates a filled queue
-Queue:: Queue(const Queue& queueToCopy){
-    size = queueToCopy.size;
-    servingNumber = queueToCopy.servingNumber;
-    ItemType* holdArray = new ItemType[size];
-    timer = queueToCopy.timer + 3;
-    for (int i = 0; i < size; i++) {
-        holdArray[i] = queueToCopy.arr[i];
+Queue::Queue(Queue* queueToCopy){
+    size = queueToCopy->size;
+    first = queueToCopy->first;
+    last = queueToCopy->last;
+    useableIdNumber = queueToCopy->useableIdNumber;
+    for (int i = 1; i < size; i++) {
+        std::string newName = first->getName();
+        int newIdNumber = first->getIdNumber();
+        Node* newPerson = new Node(newName, newIdNumber);
+        first = first->getNext();
+        newPerson->setNext(first);
     }
-    delete[] arr;
-    arr = holdArray;
-    holdArray = nullptr;
 }
 
 //Destructor
@@ -44,17 +46,19 @@ Queue:: Queue(const Queue& queueToCopy){
 //Output nothing
 //Purpose: code that needs to be destroyed before queue is
 Queue:: ~Queue(){
-    delete[] arr;
-    arr = nullptr;
-    
+    Node* next = first->getNext();
+    delete first;
+    for (int i = 1; i < size; i++) {
+        next = next->getNext();
+        delete next;
+    }
 }
 
 //Input: nothing
 //Output nothing
 //Purpose: Sees if the queue is empty
 bool Queue:: isEmpty(){
-    timer++;
-    if (servingNumber == 0) {
+    if (size == 0) {
         return true;
     }
     else{
@@ -64,57 +68,50 @@ bool Queue:: isEmpty(){
 //Input: item that is to be added
 //Output: nothing
 //Purpose: Adds one item to the back of the Queue
-void Queue:: enqueue(ItemType newItem){
-    timer +=2;
-    if(servingNumber >= size ){
-        size*=2;
-        ItemType* newArr = new ItemType[size];
-        for (int i = 0; i < servingNumber; i++) {
-            newArr[i] = arr[i];
-            timer++;
-        }
-        delete[] arr;
-        arr = newArr;
-        newArr = nullptr;
-        timer +=5;
+void Queue:: enqueue(std::string nameIn){
+    useableIdNumber++;
+    Node* newNode = new Node(nameIn, useableIdNumber);
+    if ( isEmpty() ) {
+        first = newNode;
+        last = newNode;
+        size++;
+        return;
+    } else {
+        last->setNext(newNode);
+        last = newNode;
+        size++;
     }
-    arr[servingNumber] = newItem;
-    servingNumber++;
-    timer++;
 }
 
 //Input: nothing
 //Output nothing
 //Purpose: Removes one item from the front of the Queue and returns it
-ItemType Queue:: dequeue(){
-    timer++;
-    if (isEmpty()) {
-        throw DequeueFromEmptyException();
+std::string Queue:: dequeue(int idNumber){
+    Node* before = nullptr;
+    Node* middle = first;
+    Node* after = middle->getNext();
+    for (int i = 0; i < size; i++) {
+        if( idNumber == middle->getIdNumber() ){
+            
+            std:: string removedOneName = middle->getName();
+            int removedOneIdNumber = middle->getIdNumber();
+            std:: string removedOne = removedOneName + " ID Number: " + std::to_string(removedOneIdNumber);
+            
+            if(before == nullptr){
+                first = after;
+            }
+            else{
+                before->setNext(after);
+            }
+            size--;
+            return removedOne;
+        }
+        before = middle;
+        middle = after;
+        after = after->getNext();
     }
-    ItemType firstPerson = arr[0];
-    timer++;
-    for (int i = 1; i < servingNumber; i++) {
-        arr[i-1] = arr[i];
-        timer++;
-    }
-    //std::cout << servingNumber <<  "->" << arr[servingNumber] << std::endl;
-    servingNumber--;
-    timer++;
-    return firstPerson;
-}
-
-//Input: nothing
-//Output: nothing
-//Purpose: keeps track of how much memory the object is using
-int Queue:: calcMemUsage(){
-    return sizeof(size) + sizeof(servingNumber) + sizeof(timer) + sizeof(arr) + ( sizeof(*arr) * size);
-}
-
-//Input: nothing
-//Output: nothing
-//Purpose: keeps track of how many lines of code the object is using
-int Queue:: getElapsedTime(){
-    return timer;
+    return "No one with that ID Number found";
+    
 }
 
 //Input: nothing
@@ -122,6 +119,31 @@ int Queue:: getElapsedTime(){
 //Purpose: returns the size of the queue
 int Queue:: sizeOf(){
     return size;
+}
+
+//Input: nothing
+//Output: string of the queue
+//Purpose: to get the content of the whole queue
+std:: string Queue:: toString(){
+    std:: string content;
+    Node* next = first;
+    for ( int i = 0; i < size; i++){
+        content += next->getName() + " ID Number: " + std::to_string( next->getIdNumber() ) + ", ";
+        next = next->getNext();
+    }
+    return content;
+}
+
+//Input: index of person you want to get
+//Output: string of the person at that index
+//Purpose: to get the a single person in the list
+std:: string Queue:: get(int index){
+    Node* next = first;
+    for ( int i = 0; i < index; i++){
+        next = next->getNext();
+    }
+    std:: string info = next->getName() + " ID Number: " + std::to_string( next->getIdNumber() );
+    return info;
 }
 
 
