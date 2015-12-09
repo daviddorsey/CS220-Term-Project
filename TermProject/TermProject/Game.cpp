@@ -2,17 +2,31 @@
 #include "Game.h"
 #include "Queue.h"
 
+//helper function for formatting search name
+std::string searchFormat(std::string s){
+    std::locale loc;
+    for(int i = 0; i < s.length(); i++){
+        if(s[i] != ' '){
+            s[i] = std::tolower(s[i], loc);
+        }
+        
+    }
+    s.erase(std::remove(s.begin(), s.end(), ' '), s.end());
+    return s;
+}
+
 //Constructor
-Game:: Game(int stockIn, float priceIn, std::string titleIn, std::string genreIn, int ratingIn, bool preOwnedIn, std::string publisherIn){
+Game:: Game(int stockIn, float priceIn, std::string titleIn, std::string genreIn, int ratingIn, bool preownedIn, std::string publisherIn){
     
     numInStock = stockIn;
     price = priceIn;
     title = titleIn;
     genre = genreIn;
     rating = ratingIn;
-    preOwned = preOwnedIn;
+    preowned = preownedIn;
     publisher = publisherIn;
     waitingList = new Queue();
+    searchName = searchFormat(title)+std::to_string(preowned);
 }
 
 //Copy Constructor
@@ -23,7 +37,7 @@ Game:: Game(Game* gameToCopy){
     title = gameToCopy->title;
     genre = gameToCopy->genre;
     rating = gameToCopy->rating;
-    preOwned = gameToCopy->preOwned;
+    preowned = gameToCopy->preowned;
     publisher = gameToCopy->publisher;
     for (int i = 0; i < gameToCopy->waitingList->sizeOf(); i++) {
         gameToCopy->waitingList->get(i);
@@ -47,14 +61,14 @@ std:: string Game:: toString(){
     result += "Rating " + rating + "\n";
     result += "Made by: " + publisher + "\n";
     
-    if (preOwned) {
+    if (preowned) {
         result += "Condition: Preowned \n";
     }
     else{
         result += "Condition: New \n";
     }
     
-    if(preOrder){
+    if(preorder){
         result += "This game can only be preordered at this time \n";
         result += "The waiting list for this game is: \n";
         result += waitingList->toString();
@@ -73,12 +87,12 @@ std:: string Game:: toString(){
 //Purpose: to switch a game from being preOwned to abled to be purchased
 void Game:: comeToStock(){
     
-    if (!preOrder) {
+    if (!preorder) {
         std:: cout << "This game is already on the shelves \n";
     }
     
     if(waitingList->isEmpty()){
-        preOrder = false;
+        preorder = false;
         return;
     }
     
@@ -89,7 +103,7 @@ void Game:: comeToStock(){
         }
         delete waitingList;
         waitingList = nullptr;
-        preOrder = false;
+        preorder = false;
         
     }
     
@@ -97,7 +111,7 @@ void Game:: comeToStock(){
 
 void Game:: preOrderGame(std:: string name){
     
-    if (!preOrder) {
+    if (!preorder) {
         std:: cout << "This game is already on the shelves \n";
         std:: cout << "You can purchase it if you like \n";
     }

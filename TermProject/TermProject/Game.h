@@ -11,11 +11,11 @@
 
 #include <stdio.h>
 #include <iostream>
-#include "ItemADT.h"
+#include "Item.h"
 #include "QueueADT.h"
 
 // defined(__TermProject__Game__)
-class Game : public ItemADT{
+class Game : public Item{
 
 private:
     int numInStock;
@@ -23,10 +23,11 @@ private:
     std:: string title;
     std:: string genre;
     std:: string rating;
-    bool preOrder;
+    bool preorder;
     QueueADT* waitingList;
     std:: string publisher;
-    bool preOwned;
+    bool preowned;
+    std:: string searchName;
     
 public:
     //Constructor
