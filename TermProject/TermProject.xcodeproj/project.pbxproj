@@ -152,6 +152,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C58C3631C178D41008A4059 /* Item.cpp in Sources */,
 				9C7F074D1BFC2FBE0092CD30 /* Game.cpp in Sources */,
 				377463B41C14D580001A8B0A /* Node.cpp in Sources */,
 				9C7F07491BFC2F820092CD30 /* Inventory.cpp in Sources */,

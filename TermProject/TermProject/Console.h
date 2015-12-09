@@ -11,9 +11,9 @@
 
 #include <stdio.h>
 #include <string>
-#include "ItemADT.h"
+#include "Item.h"
 
-class Console : public ItemADT{
+class Console : public Item{
     
 private:
     //number of a specific console that the store has in stock
@@ -30,6 +30,8 @@ private:
     int warranty;
     //stores whether the console is new or used
     bool preowned;
+    //unique name used for searching in the inventory
+    std::string searchName;
     
 public:
     //overloaded constructor with default values
