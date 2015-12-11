@@ -23,6 +23,7 @@ private:
     int warranty;
     bool preowned;
     std:: string searchName;
+    std::string searchFormat(std::string s);
 
 public:
     //Constructor

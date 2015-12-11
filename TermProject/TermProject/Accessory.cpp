@@ -9,7 +9,7 @@
 #include "Accessory.h"
 
 //helper function for formatting search name
-std::string searchFormat(std::string s){
+std::string Accessory::searchFormat(std::string s){
     std::locale loc;
     for(int i = 0; i < s.length(); i++){
         if(s[i] != ' '){

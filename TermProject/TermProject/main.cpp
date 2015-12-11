@@ -8,9 +8,22 @@
 
 #include <iostream>
 #include "Inventory.h"
+#include "ItemADT.h"
 
 int main(int argc, const char * argv[]) {
     
+    
+    
+    Console* TestConsole = new Console(10,60,"testPS4","","Sony",1,false);
+   
+    
+    Inventory* testInventory = new Inventory();
+    
+    testInventory->addConsoleStock(TestConsole);
+    
+    std::cout<<testInventory->checkConsoleStock("TestPS4 new");
+    
+    /*
     inventory* gameStoreInventory = new inventory();
     std::cout << "~Prototype testing for Video Game Inventory system~\n\n";
     
@@ -25,8 +38,7 @@ int main(int argc, const char * argv[]) {
     std::cout << "Testing restock...\n";
     gameStoreInventory->restock(1, "Xbox One", 100);
     std:: cout << std::endl << gameStoreInventory->checkStock(1, "Xbox One") << std::endl;
-    
-    
+    */
     
 
     return 0;

@@ -2,120 +2,136 @@
 //  Inventory.cpp
 //  TermProject
 //
-//  Created by David Dorsey on 11/17/15.
+//  Created by Jimmy Wang on 11/17/15.
 //  Copyright (c) 2015 David Dorsey. All rights reserved.
 //
-
 #include "Inventory.h"
-#include "Console.h"
 
-inventory::inventory(){
-    gameSize =10;
-    gameIndex=0;
-    acessSize=10;
-    acessIndex=0;
-    consoleSize = 10;
-    consoleIndex=0;
-    gameStock = new ItemADT*[gameSize];
-    consoleStock = new Console*[consoleSize];
-    acessStock = new ItemADT*[acessSize];
+
+Inventory::Inventory(){
+};
+
+Inventory::Inventory(const Inventory &inventoryToCopy){
+    
+};
+//turn user input string to searchName
+std::string Inventory::toSearchFormat(std::string s){
+    std::locale loc;
+    for(int i = 0; i < s.length(); i++){
+        if(s[i] != ' '){
+            s[i] = std::tolower(s[i], loc);
+        }
+    }
+    s.erase(std::remove(s.begin(), s.end(), ' '), s.end());
+    return s;
+}
+
+//Add new item
+void Inventory::addAcessStock(Accessory* itemToAdd){
+    acessStock.add(itemToAdd);
+};
+void Inventory::addGameStock(Game* itemToAdd){
+    gameStock.add(itemToAdd);
+};
+void Inventory::addConsoleStock(Console* itemToAdd){
+    consoleStock.add(itemToAdd);
     
 };
 
-void inventory::additem(int numinStock, std::string title, float price, std::string edition, std::string manufacturer, int warranty, bool preowned){
+std::string Inventory::checkAcessStock(std::string title){
+    ItemADT* temp = acessStock.get(toSearchFormat(title));
+    if(temp!=nullptr){
+        return temp->toString();
+    }else{
+        return "Item Not Found";
+    }
     
-    if(consoleIndex<consoleSize){
-        consoleStock[consoleIndex]= new Console(numinStock,price,title,edition,manufacturer,warranty,preowned);
-        consoleIndex++;
+};
+std::string Inventory::checkGameStock(std::string title){
+    ItemADT* temp = gameStock.get(toSearchFormat(title));
+    if(temp!=nullptr){
+        return temp->toString();
+    }else{
+        return "Item Not Found";
     }
-    std:: cout << "Item added: " + consoleStock[consoleIndex-1]->toString();
+    
+};
+std::string Inventory::checkConsoleStock(std::string title){
+    std::string a =toSearchFormat(title);
+    ItemADT* temp = consoleStock.get(a);
+    if(temp!=nullptr){
+        return temp->toString();
+    }else{
+        return "Item Not Found";
+    }
 };
 
-void inventory::restock(int choice, std::string title, int numCopies){
-    std::cout << "Restocking " + title + " x " + std::to_string(numCopies) + ".\n";
-    switch (choice) {
-        case 0:
-            for(int i=0; i<gameIndex;i++){
-//                if(gameStock[i]->getTitle() == title){
-//                    gameStock[i]->buy(numCopies);
-//                }
-            }
-            break;
-        case 1:
-            for(int i=0; i<consoleIndex;i++){
-                if(consoleStock[i]->getTitle() == title){
-                    consoleStock[i]->buy(numCopies);
-                }
-            }
-            break;
-        case 2:
-            for(int i=0; i<acessIndex;i++){
-//                if(acessStock[i]->getTitle() == title){
-//                    acessStock[i]->buy(numCopies);
-//                }
-            }
-            break;
-        default:
-            break;
+std::string  Inventory::restockAcess(std::string title, int numCopies){
+    ItemADT* temp = acessStock.get(toSearchFormat(title));
+    if(temp!=nullptr){
+        temp->buy(numCopies);
+        return "Item Restocked";
+    }else{
+        return "Item Not Found";
     }
-}
-
-void inventory::sell(int choice,std::string title, int amount){
-    switch (choice) {
-        case 0:
-            for(int i=0; i<gameIndex;i++){
-//                if(gameStock[i]->getTitle() == title){
-//                    gameStock[i]->sell(numCopies);
-//                }
-            }
-            break;
-        case 1:
-            for(int i=0; i<consoleIndex;i++){
-                if(consoleStock[i]->getTitle() == title){
-                    consoleStock[i]->sell(amount);
-                }
-            }
-            break;
-        case 2:
-            for(int i=0; i<acessIndex;i++){
-//                if(acessStock[i]->getTitle() == title){
-//                    acessStock[i]->sell(numCopies);
-//                }
-            }
-            break;
-        default:
-            break;
-    }
-
 };
 
-std::string inventory::checkStock(int choice,std::string title){
-    std::cout << "Checking stock...\n";
-    std::string temp;
-    switch (choice) {
-        case 0:
-            for(int i=0; i<gameIndex;i++){
-//                if(gameStock[i]->getTitle() == title){
-//                    std::cout<<gameStock[i]->toString();
-//                }
-            }
-            break;
-        case 1:
-            for(int i=0; i<consoleIndex;i++){
-                if(consoleStock[i]->getTitle() == title){
-                    temp = consoleStock[i]->toString();
-                }
-            }
-            break;
-        case 2:
-            for(int i=0; i<acessIndex;i++){
-//                if(acessStock[i]->getTitle() == title){
-//                    std::cout<<acessStock[i]->toString();
-//                }
-            }
-            break;
-        default:
-            break;
+std::string  Inventory::restockGame(std::string title, int numCopies){
+    ItemADT* temp = gameStock.get(toSearchFormat(title));
+    if(temp!=nullptr){
+        temp->buy(numCopies);
+        return "Item Restocked";
+    }else{
+        return "Item Not Found";
     }
-    return temp;
-}
+};
+std::string  Inventory::restockConsole(std::string title, int numCopies){
+    ItemADT* temp = consoleStock.get(toSearchFormat(title));
+    if(temp!=nullptr){
+        temp->buy(numCopies);
+        return "Item Restocked";
+    }else{
+        return "Item Not Found";
+    }
+};
+
+
+std::string  Inventory::sellAcess(std::string title, int sellAmount){
+    ItemADT* temp = acessStock.get(toSearchFormat(title));
+    if(temp!=nullptr){
+        temp->sell(sellAmount);
+        return "Item Sold";
+    }else{
+        return "Item Not Found";
+    }
+};
+std::string  Inventory::sellGame(std::string title, int sellAmount){
+    ItemADT* temp = gameStock.get(toSearchFormat(title));
+    if(temp!=nullptr){
+        temp->sell(sellAmount);
+        return "Item Sold";
+    }else{
+        return "Item Not Found";
+    }
+};
+std::string  Inventory::sellConsole(std::string title, int sellAmount){
+    ItemADT* temp = consoleStock.get(toSearchFormat(title));
+    if(temp!=nullptr){
+        temp->sell(sellAmount);
+        return "Item Sold";
+    }else{
+        return "Item Not Found";
+    }
+};
+
+
+void Inventory::removeAcess(std::string title){
+    acessStock.remove(toSearchFormat(title));
+};
+void Inventory::removeGame(std::string title){
+    gameStock.remove(toSearchFormat(title));
+};
+void Inventory::removeConsole(std::string title){
+    consoleStock.remove(toSearchFormat(title));
+};
+
