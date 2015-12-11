@@ -63,10 +63,15 @@ void Item::remove(){
     numInStock = 0;
 }
 
+void Item::setNumInStock(int stockIn){  numInStock = stockIn;  }
+int Item::getNumInStock(){  return numInStock;  }
 void Item::setPrice(float priceIn){  price = priceIn;  }
-std::string Item::getTitle(){  return title;  }
+float Item::getPrice(){  return price;  }
 void Item::setTitle(std::string titleIn){  title = titleIn;  }
+std::string Item::getTitle(){  return title;  }
+void Item::setPreowned(bool preownedIn){  preowned = preownedIn;  }
 bool Item::getPreowned(){  return preowned;  }
+void Item::setSearchName(std::string searchNameIn){  searchName = searchNameIn;  }
 std::string Item::getSearchName(){  return searchName;  }
 
 //formats an object's information in a readable string

@@ -40,20 +40,35 @@ public:
     //takes a console off the shelves so it's no longer available for purchase
     virtual void remove();
     
+    //changes the numInStock of the console
+    virtual void setNumInStock(int stockIn);
+    
+    //returns the console's price
+    virtual int getNumInStock();
+    
     //changes the price of the console
     virtual void setPrice(float priceIn);
     
-    //returns the console's title
-    virtual std::string getTitle();
+    //returns the console's price
+    virtual float getPrice();
     
     //changes the console's title
     virtual void setTitle(std::string titleIn);
     
-     //returns the console's preowned status - true if it was preowned, false if it is new
+    //returns the console's title
+    virtual std::string getTitle();
+    
+    //sets whether a console is preowned
+    virtual void setPreowned(bool preownedIn);
+    
+    //returns the console's preowned status - true if it was preowned, false if it is new
     virtual bool getPreowned();
 
     //formats an object's information in a readable string
     virtual std::string toString();
+    
+    //sets the console's search name
+    virtual void setSearchName(std::string searchNameIn);
     
     //returns the item's search name
     virtual std::string getSearchName();

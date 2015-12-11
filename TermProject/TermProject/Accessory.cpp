@@ -30,7 +30,9 @@ Accessory:: Accessory(int stockIn, float priceIn, std::string titleIn, std::stri
     consoleTo = consoleToIn;
     preowned = preownedIn;
     warranty = warrantyIn;
-    searchName = searchFormat(title)+searchFormat(consoleTo)+std::to_string(preowned);
+    searchName = searchFormat(title)+searchFormat(consoleTo)+"new";
+    if(preowned)
+        searchName = searchFormat(title)+searchFormat(consoleTo)+"used";
     
 }
 

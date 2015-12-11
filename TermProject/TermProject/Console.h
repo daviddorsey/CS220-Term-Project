@@ -46,23 +46,25 @@ public:
     //takes a console off the shelves so it's no longer available for purchase
     void remove();
     
-    //changes the price of the console
-    void setPrice(float priceIn);
-    
     //formats an object's information in a readable string
     std::string toString();
     
-    //returns the console's title
-    std::string getTitle();
-    
-    //changes the console's title
+    void setNumInStock(int stockIn);
+    int getNumInStock();
+    void setPrice(float priceIn);
+    float getPrice();
     void setTitle(std::string titleIn);
-    
-    //returns the console's edition
+    std::string getTitle();
+    void setManufacturer(std::string manufacturerIn);
+    std::string getManufacturer();
+    void setEdition(std::string editionIn);
     std::string getEdition();
-    
-    //returns the console's preowned status - true if it was preowned, false if it is new
+    void setWarranty(int warrantyIn);
+    int getWarranty();
+    void setPreowned(bool preownedIn);
     bool getPreowned();
+    void setSearchName(std::string searchNameIn);
+    std::string getSearchName();
     
 };
 

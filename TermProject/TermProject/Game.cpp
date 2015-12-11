@@ -26,8 +26,9 @@ Game:: Game(int stockIn, float priceIn, std::string titleIn, std::string genreIn
     preowned = preownedIn;
     publisher = publisherIn;
     waitingList = new Queue();
-    searchName = searchFormat(title)+std::to_string(preowned);
-}
+    searchName = searchFormat(title)+"new";
+    if(preowned)
+        searchName = searchFormat(title)+"used";}
 
 //Copy Constructor
 Game:: Game(Game* gameToCopy){
