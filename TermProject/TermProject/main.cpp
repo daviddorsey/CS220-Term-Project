@@ -9,6 +9,7 @@
 #include <iostream>
 #include "Inventory.h"
 #include "ItemADT.h"
+#include "TextUI.h"
 
 int main(int argc, const char * argv[]) {
     

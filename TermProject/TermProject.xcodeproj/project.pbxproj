@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		382E28211C1B121F005ED289 /* TextUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 382E28201C1B121F005ED289 /* TextUI.cpp */; };
 		3858BAC01C17FF2C003CDF99 /* ItemContainer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3858BABF1C17FF2C003CDF99 /* ItemContainer.cpp */; };
 		9C58C35D1C17850C008A4059 /* Queue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9C58C35A1C17850C008A4059 /* Queue.cpp */; };
 		9C58C3601C1788F6008A4059 /* Node.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9C58C35E1C1788F6008A4059 /* Node.cpp */; };
@@ -16,7 +17,6 @@
 		9C7F074D1BFC2FBE0092CD30 /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9C7F074B1BFC2FBE0092CD30 /* Game.cpp */; };
 		9C7F07501BFC2FCA0092CD30 /* Console.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9C7F074E1BFC2FCA0092CD30 /* Console.cpp */; };
 		9C7F07531BFC2FD70092CD30 /* Accessory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9C7F07511BFC2FD70092CD30 /* Accessory.cpp */; };
-		9C9B8A4B1C1AADC00074E3A7 /* UI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9C9B8A4A1C1AADC00074E3A7 /* UI.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -32,6 +32,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		382E28201C1B121F005ED289 /* TextUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TextUI.cpp; sourceTree = "<group>"; };
+		382E28221C1B1245005ED289 /* TextUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TextUI.h; sourceTree = "<group>"; };
 		3858BABE1C17FF1B003CDF99 /* ItemContainer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ItemContainer.h; sourceTree = "<group>"; };
 		3858BABF1C17FF2C003CDF99 /* ItemContainer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ItemContainer.cpp; sourceTree = "<group>"; };
 		9C58C35A1C17850C008A4059 /* Queue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Queue.cpp; sourceTree = "<group>"; };
@@ -52,7 +54,6 @@
 		9C7F074F1BFC2FCA0092CD30 /* Console.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Console.h; sourceTree = "<group>"; };
 		9C7F07511BFC2FD70092CD30 /* Accessory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Accessory.cpp; sourceTree = "<group>"; };
 		9C7F07521BFC2FD70092CD30 /* Accessory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Accessory.h; sourceTree = "<group>"; };
-		9C9B8A4A1C1AADC00074E3A7 /* UI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UI.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,7 +86,6 @@
 		9C7F073F1BFC2F160092CD30 /* TermProject */ = {
 			isa = PBXGroup;
 			children = (
-				9C9B8A4A1C1AADC00074E3A7 /* UI.cpp */,
 				9C58C35E1C1788F6008A4059 /* Node.cpp */,
 				9C58C35F1C1788F6008A4059 /* Node.h */,
 				9C58C35A1C17850C008A4059 /* Queue.cpp */,
@@ -105,6 +105,8 @@
 				3858BABE1C17FF1B003CDF99 /* ItemContainer.h */,
 				3858BABF1C17FF2C003CDF99 /* ItemContainer.cpp */,
 				9C7F07401BFC2F160092CD30 /* main.cpp */,
+				382E28201C1B121F005ED289 /* TextUI.cpp */,
+				382E28221C1B1245005ED289 /* TextUI.h */,
 			);
 			path = TermProject;
 			sourceTree = "<group>";
@@ -170,8 +172,8 @@
 				9C58C3601C1788F6008A4059 /* Node.cpp in Sources */,
 				9C7F07491BFC2F820092CD30 /* Inventory.cpp in Sources */,
 				9C7F07531BFC2FD70092CD30 /* Accessory.cpp in Sources */,
-				9C9B8A4B1C1AADC00074E3A7 /* UI.cpp in Sources */,
 				3858BAC01C17FF2C003CDF99 /* ItemContainer.cpp in Sources */,
+				382E28211C1B121F005ED289 /* TextUI.cpp in Sources */,
 				9C58C35D1C17850C008A4059 /* Queue.cpp in Sources */,
 				9C7F07411BFC2F160092CD30 /* main.cpp in Sources */,
 				9C7F07501BFC2FCA0092CD30 /* Console.cpp in Sources */,
