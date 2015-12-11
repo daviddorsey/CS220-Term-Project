@@ -66,8 +66,7 @@ std::string Inventory::checkGameStock(std::string title){
     
 };
 std::string Inventory::checkConsoleStock(std::string title){
-    std::string a =toSearchFormat(title);
-    ItemADT* temp = consoleStock.get(a);
+    ItemADT* temp = consoleStock.get(toSearchFormat(title));
     if(temp!=nullptr){
         return temp->toString();
     }else{
@@ -147,9 +146,92 @@ void Inventory::removeConsole(std::string title){
     numConsoles--;
 };
 
+//helper function for reading from file and casting string to bool
+bool to_bool(std::string s){
+    return s != "0";
+}
+
 void Inventory::fromFile(std::string filename){
     
+    std::ifstream infile(filename);
+    if (infile){
+        if(filename == "game.txt"){
+            while (infile){
+                if(infile){
+                    std::string strInput;
+                    std::getline(infile, strInput);
+                    if(strInput.length()>0){
+                        std::stringstream splitter(strInput);
+                        std::string title,price,copies,condition,genre,rating,maker;
+                        getline(splitter,title,',');
+                        getline(splitter,price,',');
+                        getline(splitter,copies,',');
+                        getline(splitter,condition,',');
+                        getline(splitter,genre,',');
+                        getline(splitter,rating,',');
+                        getline(splitter,maker,',');
+                        Game* g = new Game(stoi(copies), stof(price), title, genre,rating, to_bool(condition),maker);
+                        gameStock.add(g);
+                        std::cout << "\nRead:\t" << g->toString() << "\n";
+
+                    }
+                }
+                
+            }
+        }
+        if(filename == "console.txt"){
+            while (infile){
+                if(infile){
+                    std::string strInput;
+                    std::getline(infile, strInput);
+                    if(strInput.length()>0){
+                        std::stringstream splitter(strInput);
+                        std::string title,price,copies,condition,edition,maker,warranty;
+                        getline(splitter,title,',');
+                        getline(splitter,price,',');
+                        getline(splitter,copies,',');
+                        getline(splitter,condition,',');
+                        getline(splitter,edition,',');
+                        getline(splitter,maker,',');
+                        getline(splitter,warranty,',');
+                        Console* c = new Console(stoi(copies), stof(price), title, edition,maker, stoi(warranty), to_bool(condition));
+                        gameStock.add(c);
+                        std::cout << "\nRead:\t" << c->toString() << "\n";
+                        
+                    }
+                }
+                
+            }
+        }
+        if(filename == "accessory.txt"){
+            while (infile){
+                if(infile){
+                    std::string strInput;
+                    std::getline(infile, strInput);
+                    if(strInput.length()>0){
+                        std::stringstream splitter(strInput);
+                        std::string title,price,copies,condition,consoleTo,warranty;
+                        getline(splitter,title,',');
+                        getline(splitter,price,',');
+                        getline(splitter,copies,',');
+                        getline(splitter,condition,',');
+                        getline(splitter,consoleTo,',');
+                        getline(splitter,warranty,',');
+                        Accessory* a = new Accessory(stoi(copies), stof(price), title, consoleTo, to_bool(condition), stoi(warranty));
+                        gameStock.add(a);
+                        std::cout << "\nRead:\t" << a->toString() << "\n";
+                        
+                    }
+                }
+                
+            }
+        }
+    }
+    else {
+        std::cout << "Can't read from file. Inventory not loaded.\n";
+    }
 }
+
 
 void Inventory::toFile(std::string filename){
 
@@ -160,7 +242,7 @@ void Inventory::toFile(std::string filename){
             for(int i = 0; i < numGames; i++){
                 ItemADT* curr = gameStock.get(i);
                 if(curr != nullptr){
-                    outf << curr->fileFormat() << "\n";
+                    outf << curr->fileFormat() + ",\n";
                 }
             }
         }
@@ -169,7 +251,7 @@ void Inventory::toFile(std::string filename){
             for(int i = 0; i < numConsoles; i++){
                 ItemADT* curr = consoleStock.get(i);
                 if(curr != nullptr){
-                    outf << curr->fileFormat() << "\n";
+                    outf << curr->fileFormat() + ",\n";
                 }
             }
 
@@ -179,7 +261,7 @@ void Inventory::toFile(std::string filename){
             for(int i = 0; i < numAccessories; i++){
                 ItemADT* curr = acessStock.get(i);
                 if(curr != nullptr){
-                    outf << curr->fileFormat() << "\n";
+                    outf << curr->fileFormat() + ",\n";
                 }
             }
         }
@@ -190,4 +272,3 @@ void Inventory::toFile(std::string filename){
         std::cout << "Unable to write to file.\n";
     }
 }
-
