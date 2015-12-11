@@ -67,6 +67,9 @@ public:
     //formats an object's information in a readable string
     virtual std::string toString();
     
+    //creates a string with all of the contents for the game reordered for file writing
+    virtual std::string fileFormat() = 0;
+    
     //sets the console's search name
     virtual void setSearchName(std::string searchNameIn);
     

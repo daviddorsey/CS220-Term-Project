@@ -14,14 +14,30 @@ int main(int argc, const char * argv[]) {
     
     
     
-    Console* TestConsole = new Console(10,60,"testPS4","","Sony",1,false);
-   
+    Game* TestGame = new Game(250,59.99,"Fallout4","Action","M",false, "Jimmy");
+    Console* TestConsole = new Console(400,399.99,"PS4","Standard","Sony",24,false);
+    Accessory* TestAccessory = new Accessory(25,39.99,"WiiUController","WiiU",true,24);
+    Game* TestGame2 = new Game(300,50,"Splatoon","Colorful","T",false, "David");
+    Console* TestConsole2 = new Console(500,289.99,"XBOXone","","Microsoft",18,false);
+    Accessory* TestAccessory2 = new Accessory(1,1000000,"GoldenDildo","GameCube",true,989898);
+
     
     Inventory* testInventory = new Inventory();
     
+    testInventory->addGameStock(TestGame);
     testInventory->addConsoleStock(TestConsole);
+    testInventory->addAcessStock(TestAccessory2);
+    testInventory->addGameStock(TestGame2);
+    testInventory->addConsoleStock(TestConsole2);
+    testInventory->addAcessStock(TestAccessory);
     
-    std::cout<<testInventory->checkConsoleStock("TestPS4 new");
+//    std::cout<<testInventory->checkGameStock("Fallout4 new");
+//    std::cout<<testInventory->checkConsoleStock("PS4 Standard new");
+//    std::cout<<testInventory->checkAcessStock("WiiUController used");
+    
+    testInventory->toFile("game.txt");
+    testInventory->toFile("console.txt");
+    testInventory->toFile("accessory.txt");
     
     /*
     inventory* gameStoreInventory = new inventory();
@@ -40,6 +56,5 @@ int main(int argc, const char * argv[]) {
     std:: cout << std::endl << gameStoreInventory->checkStock(1, "Xbox One") << std::endl;
     */
     
-
     return 0;
 }

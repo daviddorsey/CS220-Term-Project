@@ -40,6 +40,9 @@ public:
     //formats an object's information in a readable string
     virtual std::string toString()= 0;
     
+    //creates a string with all of the contents for the game reordered for file writing
+    virtual std::string fileFormat() = 0;
+    
     //returns the item's search name
     virtual std::string getSearchName()= 0;
     

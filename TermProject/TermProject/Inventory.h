@@ -21,6 +21,9 @@
 class Inventory{
     
 private:
+    int numGames;
+    int numConsoles;
+    int numAccessories;
     ItemContainer acessStock;
     ItemContainer consoleStock;
     ItemContainer gameStock;
@@ -49,6 +52,9 @@ public:
     void  removeAcess(std::string title);
     void  removeGame(std::string title);
     void  removeConsole(std::string title);
+    
+    void fromFile(std::string filename);
+    void toFile(std::string filename);
     
     
     

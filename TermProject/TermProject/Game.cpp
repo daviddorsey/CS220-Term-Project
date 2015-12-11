@@ -16,7 +16,7 @@ std::string Game::searchFormat(std::string s){
 }
 
 //Constructor
-Game:: Game(int stockIn, float priceIn, std::string titleIn, std::string genreIn, int ratingIn, bool preownedIn, std::string publisherIn){
+Game:: Game(int stockIn, float priceIn, std::string titleIn, std::string genreIn, std::string ratingIn, bool preownedIn, std::string publisherIn){
     
     numInStock = stockIn;
     price = priceIn;
@@ -28,7 +28,8 @@ Game:: Game(int stockIn, float priceIn, std::string titleIn, std::string genreIn
     waitingList = new Queue();
     searchName = searchFormat(title)+"new";
     if(preowned)
-        searchName = searchFormat(title)+"used";}
+        searchName = searchFormat(title)+"used";
+}
 
 //Copy Constructor
 Game:: Game(Game* gameToCopy){
@@ -81,6 +82,10 @@ std:: string Game:: toString(){
     }
     
     return result;
+}
+
+std::string Game::fileFormat(){
+    return title + "," + std::to_string(price) + "," + std::to_string(numInStock) + "," + std::to_string(preowned) + "," + genre + "," + rating + "," + publisher;
 }
 
 //Input: Nothing
@@ -141,6 +146,9 @@ std:: string Game:: getRating(){
 }
 std:: string Game:: getPublisher(){
     return publisher;
+}
+std::string Game:: getSearchName(){
+    return searchName;
 }
 
 //Setters:

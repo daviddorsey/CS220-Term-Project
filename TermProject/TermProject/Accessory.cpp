@@ -77,12 +77,19 @@ std::string Accessory:: toString(){
     return result;
 }
 
+std::string Accessory::fileFormat(){
+    return title + "," + std::to_string(price) + "," + std::to_string(numInStock) + "," + std::to_string(preowned) + "," + consoleTo + "," + std::to_string(warranty);
+}
+
 //Getters:
 std:: string Accessory:: getConsoleTo(){
     return consoleTo;
 }
 int Accessory:: getWarranty(){
     return warranty;
+}
+std:: string Accessory::getSearchName(){
+    return searchName;
 }
 
 //Setters

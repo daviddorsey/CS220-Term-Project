@@ -85,3 +85,7 @@ std::string Console::toString(){
     }
     return title + " - " + edition + " edition (New): " + std::to_string(numInStock) + " in stock, at $" + std::to_string(price) + ". Manufactured by " + manufacturer + ". Available " + std::to_string(warranty) + " month warranty.\n";
 }
+
+std::string Console::fileFormat(){
+    return title + "," + std::to_string(price) + "," + std::to_string(numInStock) + "," + std::to_string(preowned) + "," + edition + "," + manufacturer + "," + std::to_string(warranty);
+}
