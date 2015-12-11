@@ -32,10 +32,11 @@ private:
     bool preowned;
     //unique name used for searching in the inventory
     std::string searchName;
+    std::string searchFormat(std::string s);
     
 public:
     //overloaded constructor with default values
-    Console(int stockIn=0, float priceIn=0, std::string titleIn="", std::string editionIn="default", std::string manufacturerIn="", int warrantyIn=0, bool preownedIn=false);
+    Console(int stockIn=0, float priceIn=0, std::string titleIn="", std::string editionIn="", std::string manufacturerIn="", int warrantyIn=0, bool preownedIn=false);
     
     //buys more copies of the console to put on the shelves
     void buy(int numCopies);
@@ -63,6 +64,9 @@ public:
     
     //returns the console's preowned status - true if it was preowned, false if it is new
     bool getPreowned();
+    
+    std::string getSearchName();
+
     
 };
 

@@ -10,10 +10,10 @@
 #define __TermProject__Accessory__
 
 #include <stdio.h>
-#include "ItemADT.h"
+#include "Item.h"
 #include <iostream>
 
-class Accessory : public ItemADT{
+class Accessory : public Item{
     
 private:
     int numInStock;
@@ -21,14 +21,13 @@ private:
     std:: string title;
     std:: string consoleTo;
     int warranty;
-    bool preOwned;
+    bool preowned;
+    std:: string searchName;
+    std::string searchFormat(std::string s);
 
 public:
     //Constructor
     Accessory(int stockIn, float priceIn, std::string titleIn, std::string consoleToIn, bool preOwnedIn, int warrantyIn);
-    
-    //Destructor
-    ~Accessory();
     
     //Allows the store to restock the accessory
     void buy(int numOfCopies);

@@ -8,10 +8,20 @@
 
 #include <iostream>
 #include "Inventory.h"
-#include "QueueADT.h"
-#include "Queue.h"
+#include "ItemADT.h"
 
 int main(int argc, const char * argv[]) {
+    
+    
+    
+    Console* TestConsole = new Console(10,60,"testPS4","default","Sony",1,false);
+   
+    
+    Inventory* testInventory = new Inventory();
+    
+    testInventory->addConsoleStock(TestConsole);
+    
+    std::cout<<testInventory->checkConsoleStock("testPS4");
     
     /*
     inventory* gameStoreInventory = new inventory();

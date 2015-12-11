@@ -10,7 +10,7 @@
 #include <iostream>
 
 //helper function for formatting search name
-std::string searchFormat(std::string s){
+std::string Console::searchFormat(std::string s){
     std::locale loc;
     for(int i = 0; i < s.length(); i++){
         if(s[i] != ' '){
@@ -30,7 +30,8 @@ Console::Console(int stockIn, float priceIn, std::string titleIn, std::string ed
     manufacturer = manufacturerIn;
     warranty = warrantyIn;
     preowned = preownedIn;
-    searchName = searchFormat(title)+searchFormat(edition)+std::to_string(preowned);
+//    searchName = searchFormat(title)+searchFormat(edition)+std::to_string(preowned);
+    searchName = searchFormat(title);
 }
 
 void Console::buy(int numCopies){
@@ -65,6 +66,7 @@ std::string Console::getTitle(){  return title;  }
 void Console::setTitle(std::string titleIn){  title = titleIn;  }
 std::string Console::getEdition(){  return edition;  }
 bool Console::getPreowned(){  return preowned;  }
+std::string Console::getSearchName(){  return searchName;  }
 
 std::string Console::toString(){
     if(preowned){

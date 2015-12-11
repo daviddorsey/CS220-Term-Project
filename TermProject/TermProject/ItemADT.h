@@ -28,6 +28,24 @@ public:
     //float price - new price that the item will be set to
     virtual void setPrice(float price) = 0;
     
+    //returns the console's title
+    virtual std::string getTitle()= 0;
+    
+    //changes the console's title
+    virtual void setTitle(std::string titleIn)= 0;
+    
+    //returns the console's preowned status - true if it was preowned, false if it is new
+    virtual bool getPreowned()= 0;
+    
+    //formats an object's information in a readable string
+    virtual std::string toString()= 0;
+    
+    //returns the item's search name
+    virtual std::string getSearchName()= 0;
+    
+    virtual ~ItemADT(){};
+
+    
 };
 
 #endif
