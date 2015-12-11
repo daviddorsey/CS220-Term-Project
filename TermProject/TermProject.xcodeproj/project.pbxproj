@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		377463B41C14D580001A8B0A /* Node.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 377463B21C14D580001A8B0A /* Node.cpp */; };
-		37F1132E1C10A5FB00D72BAC /* Queue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 37F1132B1C10A5FB00D72BAC /* Queue.cpp */; };
+		3858BAC01C17FF2C003CDF99 /* ItemContainer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3858BABF1C17FF2C003CDF99 /* ItemContainer.cpp */; };
+		9C58C35D1C17850C008A4059 /* Queue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9C58C35A1C17850C008A4059 /* Queue.cpp */; };
+		9C58C3601C1788F6008A4059 /* Node.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9C58C35E1C1788F6008A4059 /* Node.cpp */; };
+		9C58C3631C178D41008A4059 /* Item.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9C58C3611C178D41008A4059 /* Item.cpp */; };
 		9C7F07411BFC2F160092CD30 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9C7F07401BFC2F160092CD30 /* main.cpp */; };
 		9C7F07491BFC2F820092CD30 /* Inventory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9C7F07471BFC2F820092CD30 /* Inventory.cpp */; };
 		9C7F074D1BFC2FBE0092CD30 /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9C7F074B1BFC2FBE0092CD30 /* Game.cpp */; };
@@ -29,11 +31,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		377463B21C14D580001A8B0A /* Node.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Node.cpp; sourceTree = "<group>"; };
-		377463B31C14D580001A8B0A /* Node.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Node.h; sourceTree = "<group>"; };
-		37F1132B1C10A5FB00D72BAC /* Queue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Queue.cpp; sourceTree = "<group>"; };
-		37F1132C1C10A5FB00D72BAC /* Queue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Queue.h; sourceTree = "<group>"; };
-		37F1132D1C10A5FB00D72BAC /* QueueADT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QueueADT.h; sourceTree = "<group>"; };
+		3858BABE1C17FF1B003CDF99 /* ItemContainer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ItemContainer.h; sourceTree = "<group>"; };
+		3858BABF1C17FF2C003CDF99 /* ItemContainer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ItemContainer.cpp; sourceTree = "<group>"; };
+		9C58C35A1C17850C008A4059 /* Queue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Queue.cpp; sourceTree = "<group>"; };
+		9C58C35B1C17850C008A4059 /* Queue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Queue.h; sourceTree = "<group>"; };
+		9C58C35C1C17850C008A4059 /* QueueADT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QueueADT.h; sourceTree = "<group>"; };
+		9C58C35E1C1788F6008A4059 /* Node.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Node.cpp; sourceTree = "<group>"; };
+		9C58C35F1C1788F6008A4059 /* Node.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Node.h; sourceTree = "<group>"; };
+		9C58C3611C178D41008A4059 /* Item.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Item.cpp; sourceTree = "<group>"; };
+		9C58C3621C178D41008A4059 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
 		9C7F073D1BFC2F160092CD30 /* TermProject */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TermProject; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C7F07401BFC2F160092CD30 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		9C7F07471BFC2F820092CD30 /* Inventory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Inventory.cpp; sourceTree = "<group>"; };
@@ -77,20 +83,24 @@
 		9C7F073F1BFC2F160092CD30 /* TermProject */ = {
 			isa = PBXGroup;
 			children = (
+				9C58C35E1C1788F6008A4059 /* Node.cpp */,
+				9C58C35F1C1788F6008A4059 /* Node.h */,
+				9C58C35A1C17850C008A4059 /* Queue.cpp */,
+				9C58C35B1C17850C008A4059 /* Queue.h */,
+				9C58C35C1C17850C008A4059 /* QueueADT.h */,
 				9C7F07481BFC2F820092CD30 /* Inventory.h */,
 				9C7F07471BFC2F820092CD30 /* Inventory.cpp */,
 				9C7F074A1BFC2FAC0092CD30 /* ItemADT.h */,
-				9C7F074C1BFC2FBE0092CD30 /* Game.h */,
 				9C7F074B1BFC2FBE0092CD30 /* Game.cpp */,
-				37F1132D1C10A5FB00D72BAC /* QueueADT.h */,
-				37F1132C1C10A5FB00D72BAC /* Queue.h */,
-				37F1132B1C10A5FB00D72BAC /* Queue.cpp */,
-				377463B31C14D580001A8B0A /* Node.h */,
-				377463B21C14D580001A8B0A /* Node.cpp */,
-				9C7F074F1BFC2FCA0092CD30 /* Console.h */,
+				9C7F074C1BFC2FBE0092CD30 /* Game.h */,
 				9C7F074E1BFC2FCA0092CD30 /* Console.cpp */,
-				9C7F07521BFC2FD70092CD30 /* Accessory.h */,
+				9C7F074F1BFC2FCA0092CD30 /* Console.h */,
 				9C7F07511BFC2FD70092CD30 /* Accessory.cpp */,
+				9C7F07521BFC2FD70092CD30 /* Accessory.h */,
+				9C58C3611C178D41008A4059 /* Item.cpp */,
+				9C58C3621C178D41008A4059 /* Item.h */,
+				3858BABE1C17FF1B003CDF99 /* ItemContainer.h */,
+				3858BABF1C17FF2C003CDF99 /* ItemContainer.cpp */,
 				9C7F07401BFC2F160092CD30 /* main.cpp */,
 			);
 			path = TermProject;
@@ -154,10 +164,11 @@
 			files = (
 				9C58C3631C178D41008A4059 /* Item.cpp in Sources */,
 				9C7F074D1BFC2FBE0092CD30 /* Game.cpp in Sources */,
-				377463B41C14D580001A8B0A /* Node.cpp in Sources */,
+				9C58C3601C1788F6008A4059 /* Node.cpp in Sources */,
 				9C7F07491BFC2F820092CD30 /* Inventory.cpp in Sources */,
 				9C7F07531BFC2FD70092CD30 /* Accessory.cpp in Sources */,
-				37F1132E1C10A5FB00D72BAC /* Queue.cpp in Sources */,
+				3858BAC01C17FF2C003CDF99 /* ItemContainer.cpp in Sources */,
+				9C58C35D1C17850C008A4059 /* Queue.cpp in Sources */,
 				9C7F07411BFC2F160092CD30 /* main.cpp in Sources */,
 				9C7F07501BFC2FCA0092CD30 /* Console.cpp in Sources */,
 			);
@@ -185,7 +196,6 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
