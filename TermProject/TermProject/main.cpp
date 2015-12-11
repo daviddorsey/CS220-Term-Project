@@ -14,15 +14,19 @@ int main(int argc, const char * argv[]) {
     
     
     
-    Game* TestGame = new Game(250,59.99,"Fallout4","Action","M",false, "Jimmy");
-    Console* TestConsole = new Console(400,399.99,"PS4","Standard","Sony",24,false);
-    Accessory* TestAccessory = new Accessory(25,39.99,"WiiUController","WiiU",true,24);
-    Game* TestGame2 = new Game(300,50,"Splatoon","Colorful","T",false, "David");
-    Console* TestConsole2 = new Console(500,289.99,"XBOXone","","Microsoft",18,false);
-    Accessory* TestAccessory2 = new Accessory(1,1000000,"GoldenDildo","GameCube",true,989898);
+//    Game* TestGame = new Game(250,59.99,"Fallout4","Action","M",false, "Jimmy");
+//    Console* TestConsole = new Console(400,399.99,"PS4","default","Sony",24,false);
+//    Accessory* TestAccessory = new Accessory(25,39.99,"WiiFitBalanceBoard","Wii",true,24);
+//    Game* TestGame2 = new Game(300,50,"Splatoon","Colorful","T",false, "David");
+//    Console* TestConsole2 = new Console(500,289.99,"XBOXone","","Microsoft",18,false);
+//    Accessory* TestAccessory2 = new Accessory(15,40,"Wireless Headset","Xbox",true,12);
 
     
     Inventory* testInventory = new Inventory();
+    
+//    testInventory->fromFile("game.txt");
+//    testInventory->fromFile("console.txt");
+//    testInventory->fromFile("accessory.txt");
     
     testInventory->addGameStock(TestGame);
     testInventory->addConsoleStock(TestConsole);
@@ -31,9 +35,11 @@ int main(int argc, const char * argv[]) {
     testInventory->addConsoleStock(TestConsole2);
     testInventory->addAcessStock(TestAccessory);
     
-//    std::cout<<testInventory->checkGameStock("Fallout4 new");
-//    std::cout<<testInventory->checkConsoleStock("PS4 Standard new");
-//    std::cout<<testInventory->checkAcessStock("WiiUController used");
+//    std::cout << "\n\n\nTESTING SEARCHING\n\n\n";
+    
+//    std::cout<<testInventory->checkGameStock("fallout4new")<<"\n\n";
+//    std::cout<<testInventory->checkConsoleStock("PS4 Standard new")<<"\n\n";
+//    std::cout<<testInventory->checkAcessStock("wiifitbalanceboardwiiused")<<"\n\n";
     
     testInventory->toFile("game.txt");
     testInventory->toFile("console.txt");
