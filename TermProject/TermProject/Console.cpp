@@ -30,8 +30,9 @@ Console::Console(int stockIn, float priceIn, std::string titleIn, std::string ed
     manufacturer = manufacturerIn;
     warranty = warrantyIn;
     preowned = preownedIn;
-//    searchName = searchFormat(title)+searchFormat(edition)+std::to_string(preowned);
-    searchName = searchFormat(title);
+    searchName = searchFormat(title)+searchFormat(edition)+"new";
+    if(preowned)
+        searchName = searchFormat(title)+searchFormat(edition)+"used";
 }
 
 void Console::buy(int numCopies){
@@ -75,6 +76,7 @@ void Console::setWarranty(int warrantyIn){  warranty = warrantyIn;  }
 int Console::getWarranty(){  return warranty;  }
 void Console::setPreowned(bool preownedIn){  preowned = preownedIn;  }
 bool Console::getPreowned(){  return preowned;  }
+void Console::setSearchName(std::string searchNameIn){  searchName = searchNameIn;  }
 std::string Console::getSearchName(){  return searchName;  }
 
 std::string Console::toString(){

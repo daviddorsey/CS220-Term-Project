@@ -66,8 +66,7 @@ public:
     bool getPreowned();
     void setSearchName(std::string searchNameIn);
     std::string getSearchName();
-    
-    std::string getSearchName();
+
 
     
 };
