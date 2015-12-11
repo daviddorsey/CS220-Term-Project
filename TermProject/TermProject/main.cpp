@@ -21,6 +21,7 @@ int main(int argc, const char * argv[]) {
 //    Console* TestConsole2 = new Console(500,289.99,"XBOXone","","Microsoft",18,false);
 //    Accessory* TestAccessory2 = new Accessory(15,40,"Wireless Headset","Xbox",true,12);
 
+
     
     Inventory* testInventory = new Inventory();
     
@@ -28,12 +29,12 @@ int main(int argc, const char * argv[]) {
 //    testInventory->fromFile("console.txt");
 //    testInventory->fromFile("accessory.txt");
     
-    testInventory->addGameStock(TestGame);
-    testInventory->addConsoleStock(TestConsole);
-    testInventory->addAcessStock(TestAccessory2);
-    testInventory->addGameStock(TestGame2);
-    testInventory->addConsoleStock(TestConsole2);
-    testInventory->addAcessStock(TestAccessory);
+//    testInventory->addGameStock(TestGame2);
+//    testInventory->addGameStock(TestGame);
+//    testInventory->addAcessStock(TestAccessory2);
+//    testInventory->addConsoleStock(TestConsole2);
+//    testInventory->addConsoleStock(TestConsole);
+//    testInventory->addAcessStock(TestAccessory);
     
 //    std::cout << "\n\n\nTESTING SEARCHING\n\n\n";
     
