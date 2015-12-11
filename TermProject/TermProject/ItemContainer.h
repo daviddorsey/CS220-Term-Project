@@ -29,7 +29,7 @@ private:
     
 public:
     ItemContainer();
-    ItemContainer(const ItemContainer& ItemContainerToCopy);
+//    ItemContainer(const ItemContainer& ItemContainerToCopy);
     void add(ItemADT* itemToAdd);
     void remove(std::string searchName);
     ItemADT* get(std::string searchName);

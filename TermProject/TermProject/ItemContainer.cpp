@@ -10,21 +10,25 @@
 #include "ItemContainer.h"
 
 ItemContainer::ItemContainer(){
-    size = 10;
+    size = 100;
     fillIndex= 0;
     inPoint =0;
     dict = new ItemADT*[size];
 };
 
-ItemContainer::ItemContainer(const ItemContainer& ItemContainerToCopy){
-    size = ItemContainerToCopy.size;
-    fillIndex = ItemContainerToCopy.fillIndex;
-    dict = new ItemADT*[size];
-};
+//ItemContainer::ItemContainer(const ItemContainer& ItemContainerToCopy){
+//    size = ItemContainerToCopy.size;
+//    fillIndex = ItemContainerToCopy.fillIndex;
+//    dict = new ItemADT*[size];
+//    for(int i=0; i<fillIndex;i++){
+//        ItemADT* temp = new (ItemContainerToCopy.dict[i]->ItemADT);
+//        add(temp);
+//    }
+//};
 
 void ItemContainer::add(ItemADT* itemToAdd){
     if(contains(itemToAdd->getSearchName())){
-        std::cout<<"Item Not Added, already in."<<std::endl;//
+        std::cout<<"Item Not Added, already in."<<std::endl;
     }else if (fillIndex==size-1){
         doubleSize();
         shiftOrderRight(itemToAdd);
@@ -59,7 +63,7 @@ void ItemContainer::shiftOrderRight(ItemADT* itemToAdd){
     int tempIndex = fillIndex-1;
     search(itemToAdd->getSearchName());
     int t = fillIndex-inPoint;
-    if(t>1){
+    if(t>=1){
         for(int i=0; i<t; i++){
             dict[fillIndex-i]=dict[tempIndex-i];
         }
@@ -114,8 +118,9 @@ bool ItemContainer::contains(std::string searchName){
 };
 
 bool ItemContainer::search(std::string searchName){
+    //later can be use for binSearch
     //    if(size<100){
-    return linSearch(searchName);
+        return linSearch(searchName);
     //    }else{
     //        return binSearch(searchName);
     //    }
