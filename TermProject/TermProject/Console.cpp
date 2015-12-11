@@ -9,6 +9,19 @@
 #include "Console.h"
 #include <iostream>
 
+//helper function for formatting search name
+std::string searchFormat(std::string s){
+    std::locale loc;
+    for(int i = 0; i < s.length(); i++){
+        if(s[i] != ' '){
+            s[i] = std::tolower(s[i], loc);
+        }
+        
+    }
+    s.erase(std::remove(s.begin(), s.end(), ' '), s.end());
+    return s;
+}
+
 Console::Console(int stockIn, float priceIn, std::string titleIn, std::string editionIn, std::string manufacturerIn, int warrantyIn, bool preownedIn){
     numInStock = stockIn;
     price = priceIn;
@@ -17,6 +30,7 @@ Console::Console(int stockIn, float priceIn, std::string titleIn, std::string ed
     manufacturer = manufacturerIn;
     warranty = warrantyIn;
     preowned = preownedIn;
+    searchName = searchFormat(title)+searchFormat(edition)+std::to_string(preowned);
 }
 
 void Console::buy(int numCopies){

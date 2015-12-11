@@ -8,20 +8,29 @@
 
 #include "Accessory.h"
 
+//helper function for formatting search name
+std::string searchFormat(std::string s){
+    std::locale loc;
+    for(int i = 0; i < s.length(); i++){
+        if(s[i] != ' '){
+            s[i] = std::tolower(s[i], loc);
+        }
+        
+    }
+    s.erase(std::remove(s.begin(), s.end(), ' '), s.end());
+    return s;
+}
+
 //Constructor
-Accessory:: Accessory(int stockIn, float priceIn, std::string titleIn, std::string consoleToIn, bool preOwnedIn, int warrantyIn){
+Accessory:: Accessory(int stockIn, float priceIn, std::string titleIn, std::string consoleToIn, bool preownedIn, int warrantyIn){
     
     numInStock = stockIn;
     price = priceIn;
     title = titleIn;
     consoleTo = consoleToIn;
-    preOwned = preOwnedIn;
+    preowned = preownedIn;
     warranty = warrantyIn;
-    
-}
-
-//Destructor
-Accessory:: ~Accessory(){
+    searchName = searchFormat(title)+searchFormat(consoleTo)+std::to_string(preowned);
     
 }
 
@@ -56,7 +65,7 @@ std::string Accessory:: toString(){
     result += std::to_string(numInStock) + " copies in stock \n";
     result += "This accessory goes with " + title + "\n";
     result += "It has a waranty of " + std::to_string(warranty) + "\n";
-    if (preOwned) {
+    if (preowned) {
         result += "Condition: Preowned \n";
     }
     else{
