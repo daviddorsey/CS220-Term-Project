@@ -43,10 +43,20 @@ public:
     void comeToStock();
     
     //allows a user to preorder the game
-    void preOrderGame(std:: string name);
+    int preOrderGame(std:: string name);
     
     //allows a user to cancle their preorder
     std::string removePreOrder(int idNumber);
+    
+    //Getters
+    std:: string getGenre();
+    std:: string getRating();
+    std:: string getPublisher();
+    
+    //Setters
+    void setGenre(std::string genreIn);
+    void setRating(std::string ratingIn);
+    void setPublisher(std::string publisherIn);
     
     //Destructor
     ~Game();

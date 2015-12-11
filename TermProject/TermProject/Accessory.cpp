@@ -76,3 +76,19 @@ std::string Accessory:: toString(){
     
     return result;
 }
+
+//Getters:
+std:: string Accessory:: getConsoleTo(){
+    return consoleTo;
+}
+int Accessory:: getWarranty(){
+    return warranty;
+}
+
+//Setters
+void Accessory:: setConsoleTo(std:: string consoleToIn){
+    consoleTo = consoleTo;
+}
+void Accessory:: setWarranty(int warrantyIn){
+    warranty = warrantyIn;
+}

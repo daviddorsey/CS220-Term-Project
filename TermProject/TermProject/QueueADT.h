@@ -21,7 +21,7 @@ public:
     virtual bool isEmpty()=0;
     
     //adds one item to the top of the queue
-    virtual void enqueue(std::string nameIn)=0;
+    virtual int enqueue(std::string nameIn)=0;
     
     //removes one item from the top of the stack and returns it
     virtual std::string dequeue(int idNumberIn)=0;

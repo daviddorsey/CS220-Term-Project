@@ -33,7 +33,7 @@ public:
     bool isEmpty();
     
     //adds one item to the back of the Queue
-    void enqueue(std::string nameIn);
+    int enqueue(std::string nameIn);
     
     //removes one item from the front of the Queue and returns it
     std::string dequeue(int idNumberIn);
