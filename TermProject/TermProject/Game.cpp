@@ -62,6 +62,7 @@ std:: string Game:: toString(){
     result += std::to_string(numInStock) + " copies in stock \n";
     result += "Rating " + rating + "\n";
     result += "Made by: " + publisher + "\n";
+    result += "Genre: " + genre + "\n";
     
     if (preowned) {
         result += "Condition: Preowned \n";
