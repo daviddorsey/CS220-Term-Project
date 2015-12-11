@@ -33,6 +33,7 @@ public:
     void add(ItemADT* itemToAdd);
     void remove(std::string searchName);
     ItemADT* get(std::string searchName);
+    ItemADT* get(int accIndex);
     bool contains(std::string searchName);
     //Destructor
     ~ItemContainer();

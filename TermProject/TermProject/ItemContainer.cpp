@@ -94,6 +94,17 @@ ItemADT* ItemContainer::get(std::string searchName){
     }
 };
 
+ItemADT* ItemContainer::get(int accIndex){
+    if(accIndex<=fillIndex){
+        if(dict[accIndex]!=nullptr){
+            return dict[accIndex];
+        }else
+            return nullptr;
+    }else{
+        return nullptr;
+    }
+};
+
 bool ItemContainer::contains(std::string searchName){
     if(search(searchName)){
         return true;

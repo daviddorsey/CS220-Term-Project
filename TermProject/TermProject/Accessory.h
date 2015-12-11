@@ -27,7 +27,7 @@ private:
 
 public:
     //Constructor
-    Accessory(int stockIn, float priceIn, std::string titleIn, std::string consoleToIn, bool preOwnedIn, int warrantyIn);
+    Accessory(int stockIn, float priceIn, std::string titleIn, std::string consoleToIn, bool preownedIn, int warrantyIn);
     
     //Allows the store to restock the accessory
     void buy(int numOfCopies);
@@ -41,9 +41,13 @@ public:
     //returns all of the information the acessory has
     std::string toString();
     
+    //creates a string with all of the contents for the game reordered for file writing
+    std::string fileFormat();
+    
     //Getters
     std:: string getConsoleTo();
     int getWarranty();
+    std:: string getSearchName();
     
     //Setters
     void setConsoleTo(std:: string consoleToIn);

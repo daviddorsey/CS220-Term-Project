@@ -32,13 +32,16 @@ private:
     
 public:
     //Constructor
-    Game(int stockIn, float priceIn, std::string titleIn, std::string genreIn, int ratingIn, bool preOwnedIn, std::string publisherIn);
+    Game(int stockIn, float priceIn, std::string titleIn, std::string genreIn, std::string ratingIn, bool preOwnedIn, std::string publisherIn);
     
     //Copy constuctor
     Game(Game* gameToCopy);
     
     //creates a string with all of the contents for the game
     std::string toString();
+    
+    //creates a string with all of the contents for the game reordered for file writing
+    std::string fileFormat();
     
     //allows the game to go from preOrder to in stock
     void comeToStock();
@@ -53,6 +56,7 @@ public:
     std:: string getGenre();
     std:: string getRating();
     std:: string getPublisher();
+    std:: string getSearchName();
     
     //Setters
     void setGenre(std::string genreIn);

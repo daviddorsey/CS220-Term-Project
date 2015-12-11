@@ -50,6 +50,9 @@ public:
     //formats an object's information in a readable string
     std::string toString();
     
+    //creates a string with all of the contents for the game reordered for file writing
+    std::string fileFormat();
+    
     void setNumInStock(int stockIn);
     int getNumInStock();
     void setPrice(float priceIn);
