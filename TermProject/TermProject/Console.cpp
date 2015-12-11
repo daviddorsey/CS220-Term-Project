@@ -61,10 +61,19 @@ void Console::remove(){
     numInStock = 0;
 }
 
+void Console::setNumInStock(int stockIn){  numInStock = stockIn;  }
+int Console::getNumInStock(){  return numInStock;  }
 void Console::setPrice(float priceIn){  price = priceIn;  }
-std::string Console::getTitle(){  return title;  }
+float Console::getPrice(){  return price;  }
 void Console::setTitle(std::string titleIn){  title = titleIn;  }
+std::string Console::getTitle(){  return title;  }
+void Console::setManufacturer(std::string manufacturerIn){  manufacturer = manufacturerIn;  }
+std::string Console::getManufacturer(){  return manufacturer;  }
+void Console::setEdition(std::string editionIn){  edition = editionIn;  }
 std::string Console::getEdition(){  return edition;  }
+void Console::setWarranty(int warrantyIn){  warranty = warrantyIn;  }
+int Console::getWarranty(){  return warranty;  }
+void Console::setPreowned(bool preownedIn){  preowned = preownedIn;  }
 bool Console::getPreowned(){  return preowned;  }
 std::string Console::getSearchName(){  return searchName;  }
 
