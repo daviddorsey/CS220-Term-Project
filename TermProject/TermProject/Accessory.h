@@ -40,5 +40,13 @@ public:
     //returns all of the information the acessory has
     std::string toString();
     
+    //Getters
+    std:: string getConsoleTo();
+    int getWarranty();
+    
+    //Setters
+    void setConsoleTo(std:: string consoleToIn);
+    void setWarranty(int warrantyIn);
+    
 };
 #endif /* defined(__TermProject__Accessory__) */

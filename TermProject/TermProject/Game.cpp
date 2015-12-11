@@ -27,6 +27,7 @@ Game:: Game(int stockIn, float priceIn, std::string titleIn, std::string genreIn
     publisher = publisherIn;
     waitingList = new Queue();
     searchName = searchFormat(title)+std::to_string(preowned);
+    
 }
 
 //Copy Constructor
@@ -109,21 +110,47 @@ void Game:: comeToStock(){
     
 }
 
-void Game:: preOrderGame(std:: string name){
+
+//Input: name of person to add to waiting list
+//Output:
+//Purpose: to allow a user to preorder agame
+int Game:: preOrderGame(std:: string name){
     
     if (!preorder) {
         std:: cout << "This game is already on the shelves \n";
         std:: cout << "You can purchase it if you like \n";
     }
-    
     else{
-        waitingList->enqueue(name);
+        return waitingList->enqueue(name);
     }
-    
+    return -1;
 }
 
 std::string Game:: removePreOrder(int idNumber){
     
     return waitingList->dequeue(idNumber);
-    
+   
 }
+
+//Getters:
+std:: string Game:: getGenre(){
+    return genre;
+}
+std:: string Game:: getRating(){
+    return rating;
+}
+std:: string Game:: getPublisher(){
+    return publisher;
+}
+
+//Setters:
+void Game:: setGenre(std:: string genreIn){
+    genre = genreIn;
+}
+void Game:: setRating(std::string ratingIn){
+    rating = ratingIn;
+}
+void Game:: setPublisher(std::string publisherIn){
+    publisher = publisherIn;
+}
+

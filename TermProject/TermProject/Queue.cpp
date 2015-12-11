@@ -68,19 +68,20 @@ bool Queue:: isEmpty(){
 //Input: item that is to be added
 //Output: nothing
 //Purpose: Adds one item to the back of the Queue
-void Queue:: enqueue(std::string nameIn){
+int Queue:: enqueue(std::string nameIn){
     useableIdNumber++;
     Node* newNode = new Node(nameIn, useableIdNumber);
     if ( isEmpty() ) {
         first = newNode;
         last = newNode;
         size++;
-        return;
+        return useableIdNumber;
     } else {
         last->setNext(newNode);
         last = newNode;
         size++;
     }
+    return useableIdNumber;
 }
 
 //Input: nothing
