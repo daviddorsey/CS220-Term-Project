@@ -52,6 +52,8 @@ public:
     //allows a user to cancle their preorder
     std::string removePreOrder(int idNumber);
     
+    void sell(int amount);
+    
     //Getters
     std:: string getTitle();
     std:: string getGenre();

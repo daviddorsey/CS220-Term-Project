@@ -139,6 +139,12 @@ std::string Game:: removePreOrder(int idNumber){
    
 }
 
+void Game::sell(int amount){
+    if(amount<=numInStock){
+        numInStock -= amount;
+    }
+};
+
 //Getters:
 std::string Game:: getTitle(){
     return title;
