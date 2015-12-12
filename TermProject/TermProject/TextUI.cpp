@@ -16,16 +16,21 @@ void TextUI(){
     bool shutdown = false;
     std:: string prompt;
     int userInput;
+    std::string userInputS;
     
+    //read from file 
+//    inv->fromFile("game.txt");
+//    inv->fromFile("console.txt");
+//    inv->fromFile("accessory.txt");
     
     std:: cout << "Welcome to the GameStore Inventory Manage systerm " << std:: endl;
     while ( !shutdown ){
         prompt = "Select to Continue\n"
-        "1) Add New Item \n"
-        "2) Restock Item \n"
-        "3) Check Stock Item \n"
-        "4) Modify Existng Item Data \n"
-        "5) Shut Down and Save Data \n";
+        "1) Add New Item\n"
+        "2) Restock Item\n"
+        "3) Check In Stock Item\n"
+        "4) Modify In Stock Item Data\n"
+        "5) Shut Down and Save Data\n";
         
         //prints the prompt
         std:: cout << prompt;
@@ -119,6 +124,7 @@ void TextUI(){
                 
                 std::cout << "Adding " << quantity << " " << condition << " " << title << "(s) at $" << price << " each.\n\n";
                 break;
+
             case 2:
                 std::cout<<"\nRestock Item\nIs the item being restocked a: \n\ta) Game\n\tb) Console\n\tc) Accessory\n";
                 std::cin >> itemType;
@@ -161,14 +167,83 @@ void TextUI(){
                 }
                 std::cout << "Restocked " << quantity << " " << condition << " " << title << "(s).\n\n";
                 break;
+                    
             case 3:
-                std::cout<<"Check Stock Item\n";
+                    std::cout<<"\nCheck In Stock Item\nThis the item is a: \n\ta) Game\n\tb) Console\n\tc) Accessory\n";
+                    std::cin >> itemType;
+                    if(itemType != "a" && itemType != "b" && itemType != "c"){
+                        std::cout << "Invalid input.";
+                        break;
+                    }
+                    std::cout<<"Display a list Contain all Items? Y/N";
+                    std::cin>>userInputS; //TODO make sure user put in right things
+                    if(userInputS != "y" && userInputS != "Y" && userInputS != "n" && userInputS != "N"){
+                        std::cout << "Invalid input.";
+                        break;
+                    }
+                    if(userInputS == "y" || userInputS == "Y" ){
+                        if(itemType == "a"){
+                            std::cout<<inv->getListofGame();
+                        }else if(itemType == "b"){
+                            std::cout<<inv->getListofConsole();
+                        }else{
+                            std::cout<<inv->getListofAccess();
+                        }
+                    }
+                    //if the item is a game
+                    if(itemType == "a"){
+                        std::cout << "Enter the name of the item you would like to check(without spaces): ";
+                        std::cin >> title;
+                        std::cout << "New or used? ";
+                        std::cin >> condition;
+                        if(condition != "New" && condition != "new" && condition != "Used" && condition != "used"){
+                            std::cout << "Invalid input.";
+                            break;
+                        }
+                        std::string searchName = title + condition;
+                        std::cout <<inv->checkGameStock(searchName);
+                    }
+                    //if the item is a console
+                    if(itemType == "b"){
+                        std::cout << "Enter the name of the item you would like to check(without spaces): ";
+                        std::cin >> title;
+                        std::cout << "New or used? ";
+                        std::cin >> condition;
+                        if(condition != "New" && condition != "new" && condition != "Used" && condition != "used"){
+                            std::cout << "Invalid input.";
+                            break;
+                        }
+                        std::cout << "Enter the edition of the console (If standard edition, press Enter): ";
+                        std::cin >> edition;
+                        std::string searchName = title + edition + condition;
+                        std::cout <<inv->checkConsoleStock(searchName);
+                    }
+                    //if the item is an accessory
+                    if(itemType == "c"){
+                        std::cout << "Enter the name of the item you would like to check(without spaces): ";
+                        std::cin >> title;
+                        std::cout << "New or used? ";
+                        std::cin >> condition;
+                        if(condition != "New" && condition != "new" && condition != "Used" && condition != "used"){
+                            std::cout << "Invalid input.";
+                            break;
+                        }
+                        std::cout << "Enter the name of the console that this accessory is compatible with: ";
+                        std::cin >> consoleTo;
+                        std::string searchName = title + consoleTo + condition;
+                        std::cout <<inv->checkAcessStock(searchName);
+                    }
                 break;
             case 4:
-                std::cout<<"Modify Existng Item Data\n";
+                    std::cout<<"Modify Existng Item Data\n";
                 break;
             case 5:
-                std::cout<<"Shut Down and Save Data\n";
+                    std::cout<<"Saving Data\n";
+                    inv->toFile("game.txt");
+                    inv->toFile("console.txt");
+                    inv->toFile("accessory.txt");
+                    std::cout<<"Shut Dwon\n";
+                    shutdown = true;
                 break;
             default:
                 break;

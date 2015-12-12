@@ -16,7 +16,7 @@ std::string Game::searchFormat(std::string s){
 }
 
 //Constructor
-Game:: Game(int stockIn, float priceIn, std::string titleIn, std::string genreIn, std::string ratingIn, bool preownedIn, std::string publisherIn){
+Game:: Game(int stockIn, float priceIn, std::string titleIn, std::string genreIn, std::string ratingIn, bool preownedIn, std::string publisherIn, bool preorderIn){
     
     numInStock = stockIn;
     price = priceIn;
@@ -24,6 +24,7 @@ Game:: Game(int stockIn, float priceIn, std::string titleIn, std::string genreIn
     genre = genreIn;
     rating = ratingIn;
     preowned = preownedIn;
+    preorder = preorderIn;
     publisher = publisherIn;
     waitingList = new Queue();
     searchName = searchFormat(title)+"new";

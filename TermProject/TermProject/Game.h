@@ -32,7 +32,7 @@ private:
     
 public:
     //Constructor
-    Game(int stockIn, float priceIn, std::string titleIn, std::string genreIn, std::string ratingIn, bool preOwnedIn, std::string publisherIn);
+    Game(int stockIn, float priceIn, std::string titleIn, std::string genreIn, std::string ratingIn, bool preownedIn, std::string publisherIn, bool preorderIn);
     
     //Copy constuctor
     Game(Game* gameToCopy);

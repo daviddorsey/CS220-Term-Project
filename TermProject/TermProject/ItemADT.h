@@ -12,9 +12,6 @@
 class ItemADT{
     
 public:
-    
-    
-    
     //Restocks an item by buying more, reducing revenue for the day
     //int numCopies - number of items that the store is buying
     //int buyPrice - price of each item
