@@ -45,6 +45,8 @@ public:
     //returns the item's search name
     virtual std::string getSearchName()= 0;
     
+    virtual void comeToStock()=0;
+    
     virtual ~ItemADT(){};
 
     

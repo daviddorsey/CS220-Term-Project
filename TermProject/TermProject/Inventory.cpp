@@ -17,9 +17,7 @@ Inventory::Inventory(){
     numAccessories = 0;
 };
 
-Inventory::Inventory(const Inventory &inventoryToCopy){
-    
-};
+
 //turn user input string to searchName
 std::string Inventory::toSearchFormat(std::string s){
     std::locale loc;
@@ -176,6 +174,49 @@ std::string Inventory::getListofConsole(){
         }
     }
     return ss.str();
+};
+
+
+
+bool Inventory::comeToStock(std::string title){
+    ItemADT* temp = gameStock.get(toSearchFormat(title));
+    if(temp!=nullptr){
+        temp->comeToStock();
+        return true;
+    }else{
+        return false;
+    }
+};
+
+//setprice
+bool Inventory::Inventory::setPriceAcess(std::string title, int newPrice){
+    ItemADT* temp = acessStock.get(toSearchFormat(title));
+    if(temp!=nullptr){
+        temp->setPrice(newPrice);
+        return true;
+    }else{
+        return false;
+    }
+};
+
+bool Inventory::setPriceGame(std::string title, int newPrice){
+    ItemADT* temp = gameStock.get(toSearchFormat(title));
+    if(temp!=nullptr){
+        temp->setPrice(newPrice);
+        return true;
+    }else{
+        return false;
+    }
+};
+
+bool Inventory::setPriceConsole(std::string title, int newPrice){
+    ItemADT* temp = consoleStock.get(toSearchFormat(title));
+    if(temp!=nullptr){
+        temp->setPrice(newPrice);
+        return true;
+    }else{
+        return false;
+    }
 };
 
 //helper function for reading from file and casting string to bool
