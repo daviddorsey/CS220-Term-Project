@@ -152,7 +152,6 @@ bool to_bool(std::string s){
 }
 
 void Inventory::fromFile(std::string filename){
-    
     std::ifstream infile(filename);
     if (infile){
         if(filename == "game.txt"){
@@ -172,11 +171,9 @@ void Inventory::fromFile(std::string filename){
                         getline(splitter,maker,',');
                         Game* g = new Game(stoi(copies), stof(price), title, genre,rating, to_bool(condition),maker);
                         gameStock.add(g);
-                        std::cout << "\nRead:\t" << g->toString() << "\n";
-
+//                        std::cout << "\nRead:\t" << g->toString() << "\n";
                     }
                 }
-                
             }
         }
         if(filename == "console.txt"){
@@ -196,11 +193,9 @@ void Inventory::fromFile(std::string filename){
                         getline(splitter,warranty,',');
                         Console* c = new Console(stoi(copies), stof(price), title, edition,maker, stoi(warranty), to_bool(condition));
                         gameStock.add(c);
-                        std::cout << "\nRead:\t" << c->toString() << "\n";
-                        
+//                        std::cout << "\nRead:\t" << c->toString() << "\n";
                     }
                 }
-                
             }
         }
         if(filename == "accessory.txt"){
@@ -219,11 +214,11 @@ void Inventory::fromFile(std::string filename){
                         getline(splitter,warranty,',');
                         Accessory* a = new Accessory(stoi(copies), stof(price), title, consoleTo, to_bool(condition), stoi(warranty));
                         gameStock.add(a);
-                        std::cout << "\nRead:\t" << a->toString() << "\n";
+                        
+//                        std::cout << "\nRead:\t" << a->toString() << "\n";
                         
                     }
                 }
-                
             }
         }
     }
@@ -234,7 +229,6 @@ void Inventory::fromFile(std::string filename){
 
 
 void Inventory::toFile(std::string filename){
-
     std::ofstream outf(filename);
     if (outf){
         
@@ -265,7 +259,6 @@ void Inventory::toFile(std::string filename){
                 }
             }
         }
-        
         outf.close();
     }
     else { // Print an error and exit
