@@ -45,6 +45,7 @@ public:
     std::string fileFormat();
     
     //Getters
+    std:: string getTitle();
     std:: string getConsoleTo();
     int getWarranty();
     std:: string getSearchName();

@@ -53,6 +53,7 @@ public:
     std::string removePreOrder(int idNumber);
     
     //Getters
+    std:: string getTitle();
     std:: string getGenre();
     std:: string getRating();
     std:: string getPublisher();

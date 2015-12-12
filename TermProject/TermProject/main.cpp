@@ -18,12 +18,12 @@ int main(int argc, const char * argv[]) {
     
     TextUI();
     
-//    Game* TestGame = new Game(250,59.99,"Fallout4","Action","M",false, "Jimmy");
-//    Console* TestConsole = new Console(400,399.99,"PS4","default","Sony",24,false);
-//    Accessory* TestAccessory = new Accessory(25,39.99,"WiiFitBalanceBoard","Wii",true,24);
-//    Game* TestGame2 = new Game(300,50,"Splatoon","Colorful","T",false, "David");
-//    Console* TestConsole2 = new Console(500,289.99,"XBOXone","","Microsoft",18,false);
-//    Accessory* TestAccessory2 = new Accessory(15,40,"Wireless Headset","Xbox",true,12);
+    Game* TestGame = new Game(250,59.99,"Fallout4","Action","M",false, "Jimmy");
+    Console* TestConsole = new Console(400,399.99,"PS4","default","Sony",24,false);
+    Accessory* TestAccessory = new Accessory(25,39.99,"WiiFitBalanceBoard","Wii",true,24);
+    Game* TestGame2 = new Game(300,50,"Splatoon","Colorful","T",false, "David");
+    Console* TestConsole2 = new Console(500,289.99,"XBOXone","","Microsoft",18,false);
+    Accessory* TestAccessory2 = new Accessory(15,40,"Wireless Headset","Xbox",true,12);
 
 
 //    
