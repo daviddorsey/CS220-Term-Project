@@ -33,6 +33,10 @@ public:
     Inventory();
     Inventory(const Inventory &inventoryToCopy);
     
+    std::string getListofGame();
+    std::string getListofAccess();
+    std::string getListofConsole();
+    
     void addAcessStock(Accessory* itemToAdd);
     void addGameStock(Game* itemToAdd);
     void addConsoleStock(Console* itemToAdd);
