@@ -146,6 +146,38 @@ void Inventory::removeConsole(std::string title){
     numConsoles--;
 };
 
+
+std::string Inventory::getListofGame(){
+    std::stringstream ss;
+    for(int i = 0; i < numGames; i++){
+        ItemADT* curr = gameStock.get(i);
+        if(curr != nullptr){
+            curr->getPreowned() ?  ss << (curr->getTitle()) +" "+"used"+"\n" :  ss << curr->getTitle() +" "+"new"+"\n";
+        }
+    }
+    return ss.str();
+};
+std::string Inventory::getListofAccess(){
+    std::stringstream ss;
+    for(int i = 0; i < numAccessories; i++){
+        ItemADT* curr = acessStock.get(i);
+        if(curr != nullptr){
+            curr->getPreowned() ?  ss << curr->getTitle() + " "+"used"+"\n" :  ss << curr->getTitle() + " "+"new"+"\n";
+        }
+    }
+    return ss.str();
+};
+std::string Inventory::getListofConsole(){
+    std::stringstream ss;
+    for(int i = 0; i < numConsoles; i++){
+        ItemADT* curr = consoleStock.get(i);
+        if(curr != nullptr){
+            curr->getPreowned() ?  ss << curr->getTitle() + " "+"used"+"\n" :  ss << curr->getTitle() + " "+"new"+"\n";
+        }
+    }
+    return ss.str();
+};
+
 //helper function for reading from file and casting string to bool
 bool to_bool(std::string s){
     return s != "0";
@@ -231,7 +263,6 @@ void Inventory::fromFile(std::string filename){
 void Inventory::toFile(std::string filename){
     std::ofstream outf(filename);
     if (outf){
-        
         if(filename == "game.txt"){
             for(int i = 0; i < numGames; i++){
                 ItemADT* curr = gameStock.get(i);
@@ -258,7 +289,7 @@ void Inventory::toFile(std::string filename){
                     outf << curr->fileFormat() + ",\n";
                 }
             }
-        }
+        }	
         outf.close();
     }
     else { // Print an error and exit

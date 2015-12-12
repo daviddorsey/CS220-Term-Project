@@ -139,6 +139,9 @@ std::string Game:: removePreOrder(int idNumber){
 }
 
 //Getters:
+std::string Game:: getTitle(){
+    return title;
+}
 std:: string Game:: getGenre(){
     return genre;
 }
@@ -151,6 +154,7 @@ std:: string Game:: getPublisher(){
 std::string Game:: getSearchName(){
     return searchName;
 }
+
 
 //Setters:
 void Game:: setGenre(std:: string genreIn){

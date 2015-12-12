@@ -82,6 +82,9 @@ std::string Accessory::fileFormat(){
 }
 
 //Getters:
+std::string Accessory::getTitle(){
+    return title;
+}
 std:: string Accessory:: getConsoleTo(){
     return consoleTo;
 }
