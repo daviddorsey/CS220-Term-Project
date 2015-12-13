@@ -339,6 +339,7 @@ void Inventory::fromFile(std::string filename){
         infile.close();
     }
     else {
+        infile.close();
         std::cout << "Can't read from file. Inventory not loaded.\n";
     }
 }
@@ -355,7 +356,6 @@ void Inventory::toFile(std::string filename){
                 }
             }
         }
-        
         if(filename == "console.txt"){
             for(int i = 0; i < numConsoles; i++){
                 ItemADT* curr = consoleStock.get(i);
@@ -365,7 +365,6 @@ void Inventory::toFile(std::string filename){
             }
 
         }
-        
         if(filename == "accessory.txt"){
             for(int i = 0; i < numAccessories; i++){
                 ItemADT* curr = acessStock.get(i);
@@ -377,6 +376,7 @@ void Inventory::toFile(std::string filename){
         outf.close();
     }
     else { // Print an error and exit
+        outf.close();
         std::cout << "Unable to write to file.\n";
     }
 }
