@@ -95,6 +95,10 @@ std:: string Accessory::getSearchName(){
     return searchName;
 };
 
+int Accessory::getNumInStock(){
+    return numInStock;
+};
+
 //Setters
 void Accessory::setConsoleTo(std:: string consoleToIn){
     consoleTo = consoleTo;

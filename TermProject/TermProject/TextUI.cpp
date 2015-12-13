@@ -151,10 +151,12 @@ void TextUI(){
             case 2:
                 std::cout<<"\nSell Item\nIs the item being sold a (Use letter associated with the choice): \n\ta) Game\n\tb) Console\n\tc) Accessory\n";
                 std::cin >> itemType;
+                
                 if(itemType != "a" && itemType != "b" && itemType != "c"){
                     std::cout << "Invalid input.";
                     break;
                 }
+                
                 std::cout << "Enter the name of the item you would like to sell: ";
                 std::cin >> title;
                 std::cout << "New or used? ";
@@ -176,7 +178,7 @@ void TextUI(){
                     
                     //checks if game is in preorder state
                     std:: cout << "\n" << inv->getPreorderStatus(title) << "\n";
-                    if( inv->getPreorderStatus(title) ){
+                    if( inv->getPreorderStatus(searchName) ){
                         std:: cout << "Would you like to preorder the Game? ( Y/N )" << std::endl;
                         std:: cin >> userInputS;
                         if(userInputS != "y" && userInputS != "Y" && userInputS != "n" && userInputS != "N"){
@@ -192,18 +194,19 @@ void TextUI(){
                         else{
                             break;
                         }
-                    }
+                    } else{
                     
-                    //checks number of copies
-                    int numOfCopies = inv->getNumInStock(title);
-                    
-                    if ( numOfCopies < quantity){
-                        std:: cout << "There is not enough copies in stock.";
+                        //checks number of copies
+                        int numOfCopies = inv->getNumInStock(searchName);
+                        
+                        if ( numOfCopies < quantity){
+                            std:: cout << "There is not enough copies in stock.";
+                            break;
+                        }else{
+                          inv->sellGame(searchName, quantity);
+                        }
                         break;
-                    }else{
-                      inv->sellGame(searchName, quantity);
                     }
-                    break;
                 }
                 //if the item is a console
                 if(itemType == "b"){
@@ -212,7 +215,7 @@ void TextUI(){
                     searchName = title + edition + condition;
                     
                     //checks number of copies
-                    int numOfCopies = inv->getNumInStock(title);
+                    int numOfCopies = inv->getNumInStock(searchName);
                     
                     if ( numOfCopies < quantity){
                         std:: cout << "There is not enough copies in stock.";
@@ -229,10 +232,10 @@ void TextUI(){
                     searchName = title + consoleTo + condition;
                     
                     //checks number of copies
-                    int numOfCopies = inv->getNumInStock(title);
+                    int numOfCopies = inv->getNumInStock(searchName);
                     
                     if ( numOfCopies < quantity){
-                        std:: cout << "There is not enough copies in stock.";
+                        std:: cout << "There is not enough copies in stock.\n\n";
                         break;
                     }else{
                         inv->restockConsole(searchName, quantity);
@@ -306,7 +309,7 @@ void TextUI(){
                     std::cout << "Invalid input.";
                     break;
                 }
-                std::cout<<"Display a list Contain all Items? Y/N \n";
+                std::cout<<"Display a list Contain all Items? Y/N [Yes will only return title and condition of each] \n";
                 std::cin>>userInputS; //TODO make sure user put in right things
                 if(userInputS != "y" && userInputS != "Y" && userInputS != "n" && userInputS != "N"){
                     std::cout << "Invalid input.";
