@@ -307,8 +307,8 @@ void Inventory::fromFile(std::string filename){
                         getline(splitter,edition,',');
                         getline(splitter,maker,',');
                         getline(splitter,warranty,',');
-                        Console* c = new Console(stoi(copies), stof(price), title, edition,maker, stoi(warranty), to_bool(condition));
-                        gameStock.add(c);
+                        //Console* c = new Console(stoi(copies), stof(price), title, edition,maker, stoi(warranty), to_bool(condition));
+                        //gameStock.add(c);
 //                        std::cout << "\nRead:\t" << c->toString() << "\n";
                     }
                 }
@@ -328,9 +328,8 @@ void Inventory::fromFile(std::string filename){
                         getline(splitter,condition,',');
                         getline(splitter,consoleTo,',');
                         getline(splitter,warranty,',');
-                        Accessory* a = new Accessory(stoi(copies), stof(price), title, consoleTo, to_bool(condition), stoi(warranty));
-                        gameStock.add(a);
-                        
+                        //Accessory* a = new Accessory(stoi(copies), stof(price), title, consoleTo, to_bool(condition), stoi(warranty));
+                        //gameStock.add(a);
 //                        std::cout << "\nRead:\t" << a->toString() << "\n";
                         
                     }
