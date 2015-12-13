@@ -143,6 +143,10 @@ std::string Game:: removePreOrder(int idNumber){
    
 }
 
+void Game::buy(int numCopies){
+    numInStock += numCopies;
+};
+
 void Game::sell(int amount){
     if(amount<=numInStock){
         numInStock -= amount;

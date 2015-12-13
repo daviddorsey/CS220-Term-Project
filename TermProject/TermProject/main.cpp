@@ -11,6 +11,7 @@
 #include "ItemADT.h"
 #include "TextUI.h"
 #include "Accessory.h"
+#include "Queue.h"
 
 int main(int argc, const char * argv[]) {
     
@@ -34,9 +35,9 @@ int main(int argc, const char * argv[]) {
 //    testInventory->fromFile("console.txt");
 //    testInventory->fromFile("accessory.txt");
 //
-    testInventory->fromFile("game.txt");
-    testInventory->fromFile("console.txt");
-    testInventory->fromFile("accessory.txt");
+//    testInventory->fromFile("game.txt");
+//    testInventory->fromFile("console.txt");
+//    testInventory->fromFile("accessory.txt");
 //
 //
 //    Game* TestG = new Game(250,59.99,"Fallout3","Action","M",false, "Jimmy");
@@ -61,15 +62,15 @@ int main(int argc, const char * argv[]) {
 //    testInventory->addAcessStock(TestAccessory);
 //
 
-    
-    std::cout<<testInventory->checkGameStock("fallout4new")<<"\n\n";
-    std::cout<<testInventory->checkConsoleStock("PS4 new")<<"\n\n";
-    std::cout<<testInventory->checkAcessStock("wiifitbalanceboardwiiused")<<"\n\n";
-//
-    testInventory->toFile("game.txt");
-    testInventory->toFile("console.txt");
-    testInventory->toFile("accessory.txt");
+//    
+//    std::cout<<testInventory->checkGameStock("fallout4new")<<"\n\n";
+//    std::cout<<testInventory->checkConsoleStock("PS4 new")<<"\n\n";
+//    std::cout<<testInventory->checkAcessStock("wiifitbalanceboardwiiused")<<"\n\n";
 ////
+//    testInventory->toFile("game.txt");
+//    testInventory->toFile("console.txt");
+//    testInventory->toFile("accessory.txt");
+//////
 //    testInventory->addGameStock(TestG);
 //    testInventory->addConsoleStock(TestC);
 //    testInventory->addAcessStock(TestA2);

@@ -46,9 +46,18 @@ Queue::Queue(Queue* queueToCopy){
 //Output nothing
 //Purpose: code that needs to be destroyed before queue is
 Queue:: ~Queue(){
+    if (first == nullptr) {
+        return;
+    }
+    if (first->getNext() == nullptr) {
+        return;
+    }
     Node* next = first->getNext();
     delete first;
     for (int i = 1; i < size; i++) {
+        if (next->getNext() == nullptr) {
+            return;
+        }
         next = next->getNext();
         delete next;
     }

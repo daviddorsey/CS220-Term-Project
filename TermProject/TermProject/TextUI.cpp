@@ -159,26 +159,20 @@ void TextUI(){
                 
                 std::cout << "Enter the name of the item you would like to sell: ";
                 std::cin >> title;
-                std::cout << "New or used? ";
-                std::cin >> condition;
-                if(condition != "New" && condition != "new" && condition != "Used" && condition != "used"){
-                    std::cout << "Invalid input.";
-                    break;
-                }
-                std::cout << "How many would you like to sell? ";
-                std::cin >> quantity;
-                if(quantity < 0){
-                    std::cout << "Invalid input.";
-                    break;
-                }
                 
                 //if the item is a game
                 if(itemType == "a"){
+                    std::cout << "New or used? ";
+                    std::cin >> condition;
+                    if(condition != "New" && condition != "new" && condition != "Used" && condition != "used"){
+                        std::cout << "Invalid input.";
+                        break;
+                    }
                     searchName = title + condition;
                     
                     //checks if game is in preorder state
-                    std:: cout << "\n" << inv->getPreorderStatus(title) << "\n";
                     if( inv->getPreorderStatus(searchName) ){
+                        std:: cout << "This game is currently in preorder status" << std::endl;
                         std:: cout << "Would you like to preorder the Game? ( Y/N )" << std::endl;
                         std:: cin >> userInputS;
                         if(userInputS != "y" && userInputS != "Y" && userInputS != "n" && userInputS != "N"){
@@ -188,19 +182,25 @@ void TextUI(){
                         if (userInputS == "y" || userInputS == "Y") {
                             std:: cout << "What is the name would you like on the waiting list?" << std::endl;
                             std:: cin >> userInputS;
-                            std:: cout << "The ID number related to this preorder is " + std::to_string (inv->preOrder(title, userInputS)) +". It is required to be taken off the preorder list.";
+                            std:: cout << "The ID number related to this preorder is " + std::to_string (inv->preOrder(searchName, userInputS)) +". It is required to be taken off the preorder list.\n";
                             break;
                         }
                         else{
                             break;
                         }
                     } else{
+                        std::cout << "How many would you like to sell? ";
+                        std::cin >> quantity;
+                        if(quantity < 0){
+                            std::cout << "Invalid input.";
+                            break;
+                        }
                     
                         //checks number of copies
-                        int numOfCopies = inv->getNumInStock(searchName);
+                        int numOfCopies = inv->getNumInStockGame(searchName);
                         
                         if ( numOfCopies < quantity){
-                            std:: cout << "There is not enough copies in stock.";
+                            std:: cout << "There are not enough copies in stock.\n";
                             break;
                         }else{
                           inv->sellGame(searchName, quantity);
@@ -215,10 +215,10 @@ void TextUI(){
                     searchName = title + edition + condition;
                     
                     //checks number of copies
-                    int numOfCopies = inv->getNumInStock(searchName);
+                    int numOfCopies = inv->getNumInStockConsole(searchName);
                     
                     if ( numOfCopies < quantity){
-                        std:: cout << "There is not enough copies in stock.";
+                        std:: cout << "There are not enough copies in stock.";
                         break;
                     }else{
                         inv->restockConsole(searchName, quantity);
@@ -232,10 +232,10 @@ void TextUI(){
                     searchName = title + consoleTo + condition;
                     
                     //checks number of copies
-                    int numOfCopies = inv->getNumInStock(searchName);
+                    int numOfCopies = inv->getNumInStockAcess(searchName);
                     
                     if ( numOfCopies < quantity){
-                        std:: cout << "There is not enough copies in stock.\n\n";
+                        std:: cout << "There are not enough copies in stock.\n\n";
                         break;
                     }else{
                         inv->restockConsole(searchName, quantity);
@@ -246,17 +246,17 @@ void TextUI(){
                 break;
                 
             case 3:
-                std::cout<<"\nRemove Preorder\nWhat is the name of the game you preordered?\n";
-                std:: cin >> userInputS;
+                std::cout<<"\nRemove Preorder\nWhat is the name of the game you preordered?";
+                std:: cin >> title;
                 searchName = title + "new";
                 inv->checkGameStock(searchName);
                 if( inv->checkGameStock(searchName) == "Item Not Found" ){
-                    std::cout << "Game is either is not in preorder state or not in inventory";
+                    std::cout << "Game is either is not in preorder state or not in inventory\n\n";
                     break;
                 }
                 std::cout<<"\nWhat is the ID number associated with the preorder?\n";
                 std:: cin >> IDnumber;
-                std:: cout << inv->removePreOrder(title, IDnumber);
+                std:: cout << inv->removePreOrder(searchName, IDnumber) << "\n";
                 break;
                 
             case 4:
@@ -310,7 +310,7 @@ void TextUI(){
                     break;
                 }
                 std::cout<<"Display a list Contain all Items? Y/N [Yes will only return title and condition of each] \n";
-                std::cin>>userInputS; //TODO make sure user put in right things
+                std::cin>>userInputS;
                 if(userInputS != "y" && userInputS != "Y" && userInputS != "n" && userInputS != "N"){
                     std::cout << "Invalid input.";
                     break;
@@ -401,10 +401,15 @@ void TextUI(){
                             std::cout<<"\nWhat would you like the new price to be?\n";
                             std::cin >> price;
                             
-                            inv->setPriceGame(title, price);
+                            inv->setPriceGame(searchName, price);
                         }
                         if (userInputS == "b") {
-                            inv->comeToStock(title);
+                            if ( inv->getPreorderStatus(searchName) ) {
+                                inv->comeToStock(searchName);
+                            }else{
+                                std:: cout << "This game is already on the shelves.";
+                            }
+                            
                         }
                     }
                 }
@@ -429,7 +434,7 @@ void TextUI(){
                         std::cout<<"\nWhat would you like the new price to be?\n";
                         std::cin >> price;
                         
-                        inv->setPriceConsole(title, price);
+                        inv->setPriceConsole(searchName, price);
                     }
                 }
                 
@@ -453,7 +458,7 @@ void TextUI(){
                         std::cout<<"\nWhat would you like the new price to be?\n";
                         std::cin >> price;
                         
-                        inv->setPriceAcess(title, price);
+                        inv->setPriceAcess(searchName, price);
                         
                     }
                 }
@@ -485,7 +490,7 @@ void TextUI(){
                 
             case 8:
                 std::cout<<"Saving Data\n";
-                inv->toFile("game.txt");
+                inv->toFile("game"+num+".txt");
                 inv->toFile("console.txt");
                 inv->toFile("accessory.txt");
                 std::cout<<"Shut Down\n";

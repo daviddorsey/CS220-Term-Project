@@ -197,7 +197,7 @@ bool Inventory::getPreorderStatus(std::string title){
             return false;
         }
     }else{
-        std::cout<<"Not found";
+        //std::cout<<"Not found";
         return false;
     }
 };
@@ -206,7 +206,7 @@ int Inventory::getNumInStockGame(std::string title){
     if(temp!=nullptr){
         return temp->getNumInStock();
     }else{
-        std::cout<<"Not found";
+        //std::cout<<"Not found";
         return 0;
     }
 };
@@ -215,7 +215,7 @@ int Inventory::getNumInStockConsole(std::string title){
     if(temp!=nullptr){
         return temp->getNumInStock();
     }else{
-        std::cout<<"Not found";
+        //std::cout<<"Not found";
         return 0;
     }
 };
@@ -224,7 +224,7 @@ int Inventory::getNumInStockAcess(std::string title){
     if(temp!=nullptr){
         return temp->getNumInStock();
     }else{
-        std::cout<<"Not found";
+        //std::cout<<"Not found";
         return 0;
     }
 };
@@ -234,7 +234,7 @@ int Inventory::preOrder(std::string title,std:: string name){
     if(temp!=nullptr){
         return temp->preOrder(name);
     }else{
-        std::cout<<"Not found";
+        //std::cout<<"Not found";
         return 0;
     }
 };

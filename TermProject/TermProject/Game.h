@@ -37,6 +37,8 @@ public:
     //Copy constuctor
     Game(Game* gameToCopy);
     
+    void buy(int numCopies);
+    
     //creates a string with all of the contents for the game
     std::string toString();
     
