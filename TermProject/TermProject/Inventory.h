@@ -54,6 +54,11 @@ public:
     //make avabile
     bool comeToStock(std::string title);
     
+    bool getPreorderStatus(std::string title);
+    int getNumInStock(std::string title);
+    int preOrder(std::string title, std:: string name);
+    std::string removePreOrder(std::string title, int idNumber);
+    
     //setprice
     bool setPriceAcess(std::string title, int newPrice);
     bool setPriceGame(std::string title, int newPrice);
@@ -65,9 +70,6 @@ public:
     
     void fromFile(std::string filename);
     void toFile(std::string filename);
-    
-    
-    
 };
 
 #endif /* defined(__TermProject__Inventory__) */

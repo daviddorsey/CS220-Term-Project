@@ -188,6 +188,47 @@ bool Inventory::comeToStock(std::string title){
     }
 };
 
+bool Inventory::getPreorderStatus(std::string title){
+    ItemADT* temp = gameStock.get(toSearchFormat(title));
+    if(temp!=nullptr){
+        if(temp->getPreorderStatus()){
+            return true;
+        }else{
+            return false;
+        }
+    }else{
+        std::cout<<"Not found";
+        return false;
+    }
+};
+int Inventory::getNumInStock(std::string title){
+    ItemADT* temp = gameStock.get(toSearchFormat(title));
+    if(temp!=nullptr){
+        return temp->getNumInStock();
+    }else{
+        std::cout<<"Not found";
+        return 0;
+    }
+};
+int Inventory::preOrder(std::string title,std:: string name){
+    ItemADT* temp = gameStock.get(toSearchFormat(title));
+    if(temp!=nullptr){
+        return temp->preOrder(name);
+    }else{
+        std::cout<<"Not found";
+        return 0;
+    }
+};
+
+std::string Inventory::removePreOrder(std::string title,int idNumber){
+    ItemADT* temp = gameStock.get(toSearchFormat(title));
+    if(temp!=nullptr){
+        return temp->removePreOrder(idNumber);
+    }else{
+        return "Not Found";
+    }
+};
+
 //setprice
 bool Inventory::Inventory::setPriceAcess(std::string title, int newPrice){
     ItemADT* temp = acessStock.get(toSearchFormat(title));
