@@ -19,10 +19,10 @@ std::string Accessory::searchFormat(std::string s){
     }
     s.erase(std::remove(s.begin(), s.end(), ' '), s.end());
     return s;
-}
+};
 
 //Constructor
-Accessory:: Accessory(int stockIn, float priceIn, std::string titleIn, std::string consoleToIn, bool preownedIn, int warrantyIn){
+Accessory::Accessory(int stockIn, float priceIn, std::string titleIn, std::string consoleToIn, bool preownedIn, int warrantyIn){
     
     numInStock = stockIn;
     price = priceIn;
@@ -34,33 +34,33 @@ Accessory:: Accessory(int stockIn, float priceIn, std::string titleIn, std::stri
     if(preowned)
         searchName = searchFormat(title)+searchFormat(consoleTo)+"used";
     
-}
+};
 
 //Input: number of copies user bought
 //Output: nothing
 //Purpose: Allows the store to restock the accessory
-void Accessory:: buy(int numOfCopies){
+void Accessory::buy(int numOfCopies){
     numInStock +=numOfCopies;
-}
+};
 
 //Input: number of copies user sold
 //Output: nothing
 //Purpose: Allows user to sell the accessory
-void Accessory:: sell(int numOfCopies){
+void Accessory::sell(int numOfCopies){
      numInStock -=numOfCopies;
-}
+};
 
 //Input: price of the item
 //Output: nothing
 //Purpose: Allows the store to set the price of the accessory
-void Accessory:: setPrice(float priceIn){
+void Accessory::setPrice(float priceIn){
     price = priceIn;
-}
+};
 
 //Input: nothing
 //Output: a stign version of all the data for the accessory
 //Purpose: returns all of the information the acessory has
-std::string Accessory:: toString(){
+std::string Accessory::toString(){
     
     std:: string result = "Title: " + title + "\n";
     result += "Price " + std::to_string(price) + "\n";
@@ -75,30 +75,32 @@ std::string Accessory:: toString(){
     }
     
     return result;
-}
+};
 
 std::string Accessory::fileFormat(){
     return title + "," + std::to_string(price) + "," + std::to_string(numInStock) + "," + std::to_string(preowned) + "," + consoleTo + "," + std::to_string(warranty);
-}
+};
 
 //Getters:
 std::string Accessory::getTitle(){
     return title;
-}
-std:: string Accessory:: getConsoleTo(){
+};
+std:: string Accessory::getConsoleTo(){
     return consoleTo;
-}
-int Accessory:: getWarranty(){
+};
+int Accessory::getWarranty(){
     return warranty;
-}
+};
 std:: string Accessory::getSearchName(){
     return searchName;
-}
+};
 
 //Setters
-void Accessory:: setConsoleTo(std:: string consoleToIn){
+void Accessory::setConsoleTo(std:: string consoleToIn){
     consoleTo = consoleTo;
-}
-void Accessory:: setWarranty(int warrantyIn){
+};
+void Accessory::setWarranty(int warrantyIn){
     warranty = warrantyIn;
-}
+};
+
+

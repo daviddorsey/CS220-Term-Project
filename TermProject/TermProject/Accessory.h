@@ -49,10 +49,21 @@ public:
     std:: string getConsoleTo();
     int getWarranty();
     std:: string getSearchName();
+    int getNumInStock();
+    
     
     //Setters
     void setConsoleTo(std:: string consoleToIn);
     void setWarranty(int warrantyIn);
+    
+    void comeToStock(){};
+    bool getPreorderStatus(){return 0;};
+    int preOrder(){return 0;};
+    int preOrder(std:: string name){return 0;};
+    std::string removePreOrder(int idNumber){return 0;};
+
+
+
     
 };
 #endif /* defined(__TermProject__Accessory__) */

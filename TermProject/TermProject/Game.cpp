@@ -13,11 +13,10 @@ std::string Game::searchFormat(std::string s){
     }
     s.erase(std::remove(s.begin(), s.end(), ' '), s.end());
     return s;
-}
+};
 
 //Constructor
 Game:: Game(int stockIn, float priceIn, std::string titleIn, std::string genreIn, std::string ratingIn, bool preownedIn, std::string publisherIn, bool preorderIn){
-    
     numInStock = stockIn;
     price = priceIn;
     title = titleIn;
@@ -30,7 +29,7 @@ Game:: Game(int stockIn, float priceIn, std::string titleIn, std::string genreIn
     searchName = searchFormat(title)+"new";
     if(preowned)
         searchName = searchFormat(title)+"used";
-}
+};
 
 //Copy Constructor
 Game:: Game(Game* gameToCopy){
@@ -45,13 +44,19 @@ Game:: Game(Game* gameToCopy){
     for (int i = 0; i < gameToCopy->waitingList->sizeOf(); i++) {
         gameToCopy->waitingList->get(i);
     }
-}
+};
 
 //Destructor
 Game:: ~Game(){
     
     delete waitingList;
     
+}
+bool Game::getPreorderStatus(){
+    return preorder;
+};
+int Game::getNumInStock(){
+    return numInStock;
 }
 
 //Input: Nothing
@@ -121,7 +126,7 @@ void Game:: comeToStock(){
 //Input: name of person to add to waiting list
 //Output:
 //Purpose: to allow a user to preorder agame
-int Game:: preOrderGame(std:: string name){
+int Game:: preOrder(std:: string name){
     
     if (!preorder) {
         std:: cout << "This game is already on the shelves \n";
@@ -134,7 +139,6 @@ int Game:: preOrderGame(std:: string name){
 }
 
 std::string Game:: removePreOrder(int idNumber){
-    
     return waitingList->dequeue(idNumber);
    
 }

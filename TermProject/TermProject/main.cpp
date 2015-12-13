@@ -10,16 +10,17 @@
 #include "Inventory.h"
 #include "ItemADT.h"
 #include "TextUI.h"
-#include "Game.h"
-
+#include "Accessory.h"
 
 int main(int argc, const char * argv[]) {
     
     
-    TextUI();
-    
+//    TextUI();
+    Game* temp = new Game(250,59.99,"Fallout4","Action","M",false, "Jimmy",true);
+    Accessory* tempA = new Accessory(15,40,"Wireless Headset","Xbox",true,12);
+
 //    Game* TestGame = new Game(250,59.99,"Fallout4","Action","M",false, "Jimmy");
-//    Console* TestConsole = new Console(400,399.99,"PS4","default","Sony",24,false);
+    Console* TestConsole = new Console(400,399.99,"PS4","default","Sony",24,false);
 //    Accessory* TestAccessory = new Accessory(25,39.99,"WiiFitBalanceBoard","Wii",true,24);
 //    Game* TestGame2 = new Game(300,50,"Splatoon","Colorful","T",false, "David");
 //    Console* TestConsole2 = new Console(500,289.99,"XBOXone","","Microsoft",18,false);
@@ -27,8 +28,8 @@ int main(int argc, const char * argv[]) {
 
 
 //    
-//    Inventory* testInventory = new Inventory();
-////    
+    Inventory* testInventory = new Inventory();
+////
 //    testInventory->fromFile("game.txt");
 //    testInventory->fromFile("console.txt");
 //    testInventory->fromFile("accessory.txt");

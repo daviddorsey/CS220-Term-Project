@@ -70,8 +70,13 @@ public:
     void setSearchName(std::string searchNameIn);
     std::string getSearchName();
 
+    void comeToStock(){};
+    bool getPreorderStatus(){return 0;};
+    int preOrder(){return 0;};
+    int preOrder(std:: string name){return 0;};
+    std::string removePreOrder(int idNumber){return 0;};
 
-    
+
 };
 
 #endif /* defined(__TermProject__Console__) */

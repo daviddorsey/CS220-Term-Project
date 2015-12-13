@@ -250,7 +250,6 @@ void Inventory::fromFile(std::string filename){
                     }
                 }
             }
-            infile.close();
         }
         if(filename == "console.txt"){
             while (infile){
@@ -273,7 +272,6 @@ void Inventory::fromFile(std::string filename){
                     }
                 }
             }
-            infile.close();
         }
         if(filename == "accessory.txt"){
             while (infile){

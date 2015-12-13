@@ -35,7 +35,7 @@ void TextUI(){
         //prints the prompt
         std:: cout << prompt;
         std:: cin >> userInput;
-        std::string itemType, title, condition, manufacturer, edition, consoleTo, publisher, rating, genre;
+        std::string itemType, title, condition, manufacturer, edition, consoleTo, publisher, rating, genre,preorderIn;
         int quantity, warranty;
         float price;
 
@@ -78,9 +78,10 @@ void TextUI(){
                     std::cin >> publisher;
                     Game* g;
                     if(condition == "New" || condition == "new")
-                        g = new Game(quantity, price, title, genre, rating, false, publisher);
+                        //
+                        g = new Game(quantity, price, title, genre, rating, false, publisher,preorderIn);
                     else
-                        g = new Game(quantity, price, title, genre, rating, true, publisher);
+                        g = new Game(quantity, price, title, genre, rating, true, publisher, preorderIn);
                     inv->addGameStock(g);
                 }
                 //brings in data members specific to console
@@ -96,12 +97,12 @@ void TextUI(){
                         break;
                     }
                     Console* c;
-                    if(condition == "New" || condition == "new")
+                    if(condition == "New" || condition == "new"){
                         c = new Console(quantity, price, title, edition, manufacturer, warranty, false);
-                    else
-                        c = new Console(quantity, price, title, edition, manufacturer, warranty, true);
-                    inv->addConsoleStock(c);
-
+                    }else{
+                        c = new Console(quantity, price, title, edition, manufacturer, warranty, false);
+                    }
+                     inv->addConsoleStock(c);
                 }
                 //brings in data members specific to accessory
                 if(itemType == "c"){
