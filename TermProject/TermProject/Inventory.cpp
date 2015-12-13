@@ -188,6 +188,66 @@ bool Inventory::comeToStock(std::string title){
     }
 };
 
+bool Inventory::getPreorderStatus(std::string title){
+    ItemADT* temp = gameStock.get(toSearchFormat(title));
+    if(temp!=nullptr){
+        if(temp->getPreorderStatus()){
+            return true;
+        }else{
+            return false;
+        }
+    }else{
+        //std::cout<<"Not found";
+        return false;
+    }
+};
+int Inventory::getNumInStockGame(std::string title){
+    ItemADT* temp = gameStock.get(toSearchFormat(title));
+    if(temp!=nullptr){
+        return temp->getNumInStock();
+    }else{
+        //std::cout<<"Not found";
+        return 0;
+    }
+};
+int Inventory::getNumInStockConsole(std::string title){
+    ItemADT* temp = consoleStock.get(toSearchFormat(title));
+    if(temp!=nullptr){
+        return temp->getNumInStock();
+    }else{
+        //std::cout<<"Not found";
+        return 0;
+    }
+};
+int Inventory::getNumInStockAcess(std::string title){
+    ItemADT* temp = acessStock.get(toSearchFormat(title));
+    if(temp!=nullptr){
+        return temp->getNumInStock();
+    }else{
+        //std::cout<<"Not found";
+        return 0;
+    }
+};
+
+int Inventory::preOrder(std::string title,std:: string name){
+    ItemADT* temp = gameStock.get(toSearchFormat(title));
+    if(temp!=nullptr){
+        return temp->preOrder(name);
+    }else{
+        //std::cout<<"Not found";
+        return 0;
+    }
+};
+
+std::string Inventory::removePreOrder(std::string title,int idNumber){
+    ItemADT* temp = gameStock.get(toSearchFormat(title));
+    if(temp!=nullptr){
+        return temp->removePreOrder(idNumber);
+    }else{
+        return "Not Found";
+    }
+};
+
 //setprice
 bool Inventory::Inventory::setPriceAcess(std::string title, int newPrice){
     ItemADT* temp = acessStock.get(toSearchFormat(title));
@@ -250,7 +310,6 @@ void Inventory::fromFile(std::string filename){
                     }
                 }
             }
-            infile.close();
         }
         if(filename == "console.txt"){
             while (infile){
@@ -268,12 +327,11 @@ void Inventory::fromFile(std::string filename){
                         getline(splitter,maker,',');
                         getline(splitter,warranty,',');
                         Console* c = new Console(stoi(copies), stof(price), title, edition,maker, stoi(warranty), to_bool(condition));
-                        gameStock.add(c);
+                        consoleStock.add(c);
 //                        std::cout << "\nRead:\t" << c->toString() << "\n";
                     }
                 }
             }
-            infile.close();
         }
         if(filename == "accessory.txt"){
             while (infile){
@@ -290,8 +348,7 @@ void Inventory::fromFile(std::string filename){
                         getline(splitter,consoleTo,',');
                         getline(splitter,warranty,',');
                         Accessory* a = new Accessory(stoi(copies), stof(price), title, consoleTo, to_bool(condition), stoi(warranty));
-                        gameStock.add(a);
-                        
+                        acessStock.add(a);
 //                        std::cout << "\nRead:\t" << a->toString() << "\n";
                         
                     }
@@ -317,7 +374,6 @@ void Inventory::toFile(std::string filename){
                 }
             }
         }
-        
         if(filename == "console.txt"){
             for(int i = 0; i < numConsoles; i++){
                 ItemADT* curr = consoleStock.get(i);
@@ -327,7 +383,6 @@ void Inventory::toFile(std::string filename){
             }
 
         }
-        
         if(filename == "accessory.txt"){
             for(int i = 0; i < numAccessories; i++){
                 ItemADT* curr = acessStock.get(i);
@@ -336,9 +391,10 @@ void Inventory::toFile(std::string filename){
                 }
             }
         }	
-        outf.close();
+//        outf.close();
     }
     else { // Print an error and exit
+        outf.close();
         std::cout << "Unable to write to file.\n";
     }
 }

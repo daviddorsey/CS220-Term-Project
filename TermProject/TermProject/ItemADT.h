@@ -25,7 +25,7 @@ public:
     
     //Changes the price of an item
     //float price - new price that the item will be set to
-    virtual void setPrice(float price) = 0;
+    virtual void setPrice(float priceIn) = 0;
     
     //returns the console's title
     virtual std::string getTitle()= 0;
@@ -35,6 +35,8 @@ public:
     
     //returns the console's preowned status - true if it was preowned, false if it is new
     virtual bool getPreowned()= 0;
+    
+    virtual int getNumInStock()=0;
     
     //formats an object's information in a readable string
     virtual std::string toString()= 0;
@@ -47,9 +49,14 @@ public:
     
     virtual void comeToStock()=0;
     
+    virtual bool getPreorderStatus()=0;
+    
+    virtual int preOrder(std:: string name) =0;
+    
+    virtual std::string removePreOrder(int idNumber)=0;
+    
     virtual ~ItemADT(){};
 
-    
 };
 
 #endif
