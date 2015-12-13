@@ -77,6 +77,11 @@ std::string Accessory::toString(){
     return result;
 };
 
+int Accessory::getNumInStock(){
+    return numInStock;
+};
+
+
 std::string Accessory::fileFormat(){
     return title + "," + std::to_string(price) + "," + std::to_string(numInStock) + "," + std::to_string(preowned) + "," + consoleTo + "," + std::to_string(warranty);
 };

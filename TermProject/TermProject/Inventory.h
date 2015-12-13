@@ -55,7 +55,11 @@ public:
     bool comeToStock(std::string title);
     
     bool getPreorderStatus(std::string title);
-    int getNumInStock(std::string title);
+    
+    int getNumInStockGame(std::string title);
+    int getNumInStockConsole(std::string title);
+    int getNumInStockAcess(std::string title);
+    
     int preOrder(std::string title, std:: string name);
     std::string removePreOrder(std::string title, int idNumber);
     

@@ -201,7 +201,7 @@ bool Inventory::getPreorderStatus(std::string title){
         return false;
     }
 };
-int Inventory::getNumInStock(std::string title){
+int Inventory::getNumInStockGame(std::string title){
     ItemADT* temp = gameStock.get(toSearchFormat(title));
     if(temp!=nullptr){
         return temp->getNumInStock();
@@ -210,6 +210,25 @@ int Inventory::getNumInStock(std::string title){
         return 0;
     }
 };
+int Inventory::getNumInStockConsole(std::string title){
+    ItemADT* temp = consoleStock.get(toSearchFormat(title));
+    if(temp!=nullptr){
+        return temp->getNumInStock();
+    }else{
+        std::cout<<"Not found";
+        return 0;
+    }
+};
+int Inventory::getNumInStockAcess(std::string title){
+    ItemADT* temp = acessStock.get(toSearchFormat(title));
+    if(temp!=nullptr){
+        return temp->getNumInStock();
+    }else{
+        std::cout<<"Not found";
+        return 0;
+    }
+};
+
 int Inventory::preOrder(std::string title,std:: string name){
     ItemADT* temp = gameStock.get(toSearchFormat(title));
     if(temp!=nullptr){
@@ -307,8 +326,8 @@ void Inventory::fromFile(std::string filename){
                         getline(splitter,edition,',');
                         getline(splitter,maker,',');
                         getline(splitter,warranty,',');
-                        //Console* c = new Console(stoi(copies), stof(price), title, edition,maker, stoi(warranty), to_bool(condition));
-                        //gameStock.add(c);
+                        Console* c = new Console(stoi(copies), stof(price), title, edition,maker, stoi(warranty), to_bool(condition));
+                        consoleStock.add(c);
 //                        std::cout << "\nRead:\t" << c->toString() << "\n";
                     }
                 }
@@ -328,8 +347,8 @@ void Inventory::fromFile(std::string filename){
                         getline(splitter,condition,',');
                         getline(splitter,consoleTo,',');
                         getline(splitter,warranty,',');
-                        //Accessory* a = new Accessory(stoi(copies), stof(price), title, consoleTo, to_bool(condition), stoi(warranty));
-                        //gameStock.add(a);
+                        Accessory* a = new Accessory(stoi(copies), stof(price), title, consoleTo, to_bool(condition), stoi(warranty));
+                        acessStock.add(a);
 //                        std::cout << "\nRead:\t" << a->toString() << "\n";
                         
                     }
@@ -339,7 +358,6 @@ void Inventory::fromFile(std::string filename){
         infile.close();
     }
     else {
-        infile.close();
         std::cout << "Can't read from file. Inventory not loaded.\n";
     }
 }
@@ -373,7 +391,7 @@ void Inventory::toFile(std::string filename){
                 }
             }
         }	
-        outf.close();
+//        outf.close();
     }
     else { // Print an error and exit
         outf.close();
