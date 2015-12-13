@@ -490,7 +490,7 @@ void TextUI(){
                 
             case 8:
                 std::cout<<"Saving Data\n";
-                inv->toFile("game"+num+".txt");
+                inv->toFile("game.txt");
                 inv->toFile("console.txt");
                 inv->toFile("accessory.txt");
                 std::cout<<"Shut Down\n";
