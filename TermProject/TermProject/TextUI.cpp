@@ -108,7 +108,7 @@ void TextUI(){
                 }
                 //brings in data members specific to console
                 if(itemType == "b"){
-                    std::cout << "Enter the edition of the console (If standard edition, press Enter): ";
+                    std::cout << "Enter the edition of the console (If standard edition, enter \"standard\"): ";
                     std::cin >> edition;
                     std::cout << "Enter the manufacturer of the console: ";
                     std::cin >> manufacturer;
@@ -122,7 +122,7 @@ void TextUI(){
                     if(condition == "New" || condition == "new"){
                         c = new Console(quantity, price, title, edition, manufacturer, warranty, false);
                     }else{
-                        c = new Console(quantity, price, title, edition, manufacturer, warranty, false);
+                        c = new Console(quantity, price, title, edition, manufacturer, warranty, true);
                     }
                      inv->addConsoleStock(c);
                 }
@@ -138,11 +138,9 @@ void TextUI(){
                     }
                     Accessory* a;
                     if(condition == "New" || condition == "new")
-                        std:: cout << "create accessory new";
-                        //a = new Accessory(quantity, price, title, consoleTo, false, warranty);
+                        a = new Accessory(quantity, price, title, consoleTo, false, warranty);
                     else
-                        std:: cout << "create accessory used";
-                        //a = new Accessory(quantity, price, title, consoleTo, true, warranty);
+                        a = new Accessory(quantity, price, title, consoleTo, true, warranty);
                     inv->addAcessStock(a);
                     
                 }
@@ -171,12 +169,14 @@ void TextUI(){
                     std::cout << "Invalid input.";
                     break;
                 }
+                
                 //if the item is a game
                 if(itemType == "a"){
                     searchName = title + condition;
                     
                     //checks if game is in preorder state
-                    if( inv-> ){
+                    std:: cout << "\n" << inv->getPreorderStatus(title) << "\n";
+                    if( inv->getPreorderStatus(title) ){
                         std:: cout << "Would you like to preorder the Game? ( Y/N )" << std::endl;
                         std:: cin >> userInputS;
                         if(userInputS != "y" && userInputS != "Y" && userInputS != "n" && userInputS != "N"){
@@ -186,7 +186,7 @@ void TextUI(){
                         if (userInputS == "y" || userInputS == "Y") {
                             std:: cout << "What is the name would you like on the waiting list?" << std::endl;
                             std:: cin >> userInputS;
-                            std:: cout << "The ID number related to this preorder is "+ inv-> +". It is required to be taken off the preorder list.";
+                            std:: cout << "The ID number related to this preorder is " + std::to_string (inv->preOrder(title, userInputS)) +". It is required to be taken off the preorder list.";
                             break;
                         }
                         else{
@@ -195,13 +195,14 @@ void TextUI(){
                     }
                     
                     //checks number of copies
-                    int numOfCopies = ;
+                    int numOfCopies = inv->getNumInStock(title);
                     
                     if ( numOfCopies < quantity){
                         std:: cout << "There is not enough copies in stock.";
                         break;
+                    }else{
+                      inv->sellGame(searchName, quantity);
                     }
-                    inv->sellGame(searchName, quantity);
                     break;
                 }
                 //if the item is a console
@@ -209,14 +210,34 @@ void TextUI(){
                     std::cout << "Enter the edition of the console (If standard edition, press Enter): ";
                     std::cin >> edition;
                     searchName = title + edition + condition;
-                    inv->restockConsole(searchName, quantity);
+                    
+                    //checks number of copies
+                    int numOfCopies = inv->getNumInStock(title);
+                    
+                    if ( numOfCopies < quantity){
+                        std:: cout << "There is not enough copies in stock.";
+                        break;
+                    }else{
+                        inv->restockConsole(searchName, quantity);
+                    }
+                    
                 }
                 //if the item is an accessory
                 if(itemType == "c"){
                     std::cout << "Enter the name of the console that this accessory is compatible with: ";
                     std::cin >> consoleTo;
                     searchName = title + consoleTo + condition;
-                    inv->restockConsole(searchName, quantity);
+                    
+                    //checks number of copies
+                    int numOfCopies = inv->getNumInStock(title);
+                    
+                    if ( numOfCopies < quantity){
+                        std:: cout << "There is not enough copies in stock.";
+                        break;
+                    }else{
+                        inv->restockConsole(searchName, quantity);
+                    }
+                    
                 }
                 std::cout << "Sold " << quantity << " " << condition << " " << title << "(s).\n\n";
                 break;
@@ -232,7 +253,7 @@ void TextUI(){
                 }
                 std::cout<<"\nWhat is the ID number associated with the preorder?\n";
                 std:: cin >> IDnumber;
-                std:: cout << ;
+                std:: cout << inv->removePreOrder(title, IDnumber);
                 break;
                 
             case 4:
@@ -279,7 +300,7 @@ void TextUI(){
                 break;
                 
             case 5:
-                std::cout<<"\nCheck In Stock Item\nThis the item is a (Use letter associated with the choice): \n\ta) Game\n\tb) Console\n\tc) Accessory\n";
+                std::cout<<"\nCheck In Stock Item\nThe type of item you want to check is a (Use letter associated with the choice): \n\ta) Game\n\tb) Console\n\tc) Accessory\n";
                 std::cin >> itemType;
                 if(itemType != "a" && itemType != "b" && itemType != "c"){
                     std::cout << "Invalid input.";
@@ -299,6 +320,7 @@ void TextUI(){
                     }else{
                         std::cout<<inv->getListofAccess();
                     }
+                    break;
                 }
                 //if the item is a game
                 if(itemType == "a"){
@@ -369,11 +391,11 @@ void TextUI(){
                         break;
                     }
                     else{
-                        std::cout<<"\nWhat would you like to change?\n\t a)Price \n\t b)Make A Preorder Game Avaiable";
+                        std::cout<<"\nWhat would you like to change?\n\t a)Price \n\t b)Make A Preorder Game Avaiable\n";
                         std::cin >> userInputS;
                         
                         if (userInputS == "a") {
-                            std::cout<<"\nWhat would you like the new price to be?";
+                            std::cout<<"\nWhat would you like the new price to be?\n";
                             std::cin >> price;
                             
                             inv->setPriceGame(title, price);
@@ -401,7 +423,7 @@ void TextUI(){
                         break;
                     }
                     else{
-                        std::cout<<"\nWhat would you like the new price to be?";
+                        std::cout<<"\nWhat would you like the new price to be?\n";
                         std::cin >> price;
                         
                         inv->setPriceConsole(title, price);
@@ -425,7 +447,7 @@ void TextUI(){
                         break;
                     }
                     else{
-                        std::cout<<"\nWhat would you like the new price to be?";
+                        std::cout<<"\nWhat would you like the new price to be?\n";
                         std::cin >> price;
                         
                         inv->setPriceAcess(title, price);
@@ -453,7 +475,7 @@ void TextUI(){
                 "6) Helper\n"
                 "\t prints out a diagram of the abilies of the program"
                 "7) Shut Down and Save Data\n"
-                "\t saves the data about the inventory and exits the program";
+                "\t saves the data about the inventory and exits the program \n";
                 
                 std:: cout << helpInfo;
                 break;
